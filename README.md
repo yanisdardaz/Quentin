@@ -55,7 +55,7 @@ L'agence reçoit chaque demande **par email**, avec le PDF joint.
 | | Fonctionnalité | Détail |
 |---|---|---|
 | 🏠 | **Site multipage** | Accueil, Location, Prestations, Casino, Événements, L'agence, Devis, Mentions légales, avec navigation sans rechargement |
-| 🛒 | **Catalogue** | 203 articles répartis en 3 rayons et 28 catégories, avec recherche (insensible aux accents), filtres et bascule des prix **HT / TTC** |
+| 🛒 | **Catalogue** | 203 articles répartis en 3 rayons et 25 catégories, avec recherche (insensible aux accents), filtres et bascule des prix **HT / TTC** |
 | 🧮 | **Estimation en direct** | Panier avec quantités, durée de location, calcul HT, TVA 20 % et TTC |
 | 📝 | **Formulaire en 3 étapes** | Coordonnées → Événement → Projet, avec validation des champs |
 | 📄 | **Devis PDF** | Généré dans le navigateur : logo, numéro unique, client, événement, tableau des articles, totaux et mentions |
