@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All In Évent – Créons ensemble des événements inoubliables</title>
+<meta name="description" content="All In Évent : location de matériel événementiel (son, lumière, vidéo, mobilier, décoration), prestations clé en main, animation casino, structures gonflables et team building.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<style>
+__CSS__
+/* ====== Photos ====== */
+[data-img]{background-image:linear-gradient(180deg,rgba(7,7,10,.25),rgba(7,7,10,.8)),var(--img),var(--fond,none)!important;background-size:cover!important;background-position:center!important}
+.hero[data-img]{background-image:linear-gradient(180deg,rgba(7,7,10,.72),rgba(7,7,10,.9) 70%,var(--noir)),var(--img),radial-gradient(ellipse at 20% 0%,rgba(74,92,255,.35),transparent 50%)!important}
+.page-hero[data-img]{background-image:linear-gradient(180deg,rgba(7,7,10,.75),rgba(7,7,10,.92)),var(--img),radial-gradient(ellipse at 50% 0%,rgba(74,92,255,.3),transparent 60%)!important}
+.carte[data-img]::before,.rayon[data-img]::before{opacity:.35}
+.photos .produit .vis svg,.photos .bloc-visuel svg{opacity:0}
+.photos .produit .vis{height:140px}
+.bloc-visuel[data-img]{background-image:linear-gradient(180deg,transparent 50%,rgba(7,7,10,.85)),var(--img),var(--fond,none)!important}
+#sectionCasino[data-img]{background-image:linear-gradient(90deg,rgba(7,7,10,.97) 35%,rgba(7,7,10,.7)),var(--img)!important}
+.hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0;transition:opacity 1.2s ease;pointer-events:none}
+.hero-video.prete{opacity:1}
+.hero-voile{position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(7,7,10,.55) 0%,rgba(7,7,10,.45) 40%,rgba(7,7,10,.85) 85%,var(--noir) 100%),radial-gradient(ellipse at 50% 40%,transparent 30%,rgba(7,7,10,.55) 100%)}
+.hero .faisceau{z-index:1}
+.hero-contenu{z-index:2}
+@media (prefers-reduced-motion:reduce){.hero-video{display:none}}
+.hero-logo{-webkit-mask-image:none!important;mask-image:none!important;border-radius:0!important;width:min(560px,86%)!important;margin:0 auto 34px!important;
+  filter:drop-shadow(0 0 28px rgba(212,166,74,.28)) drop-shadow(0 10px 30px rgba(0,0,0,.7));
+  animation:logoEntree 1.4s cubic-bezier(.2,.8,.2,1) both, logoFlotte 6s ease-in-out 1.4s infinite}
+@keyframes logoEntree{from{opacity:0;transform:translateY(24px) scale(.94);filter:blur(6px) drop-shadow(0 0 0 rgba(212,166,74,0))}to{opacity:1;transform:none}}
+@keyframes logoFlotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+@media (prefers-reduced-motion:reduce){.hero-logo{animation:none}}
+.logo-txt{white-space:nowrap;flex-shrink:0}
+.credit{font-size:.7rem;color:#5e5c66;text-align:center;margin-top:8px}
+.credit a{color:#7d7a86}
+/* ====== Ajouts site complet ====== */
+.vue{display:none}
+.vue.active{display:block;animation:apparait .45s ease}
+.menu a.courant{color:var(--or-clair)}
+.menu a.courant::after{width:100%}
+.panier-btn{position:relative}
+.badge{position:absolute;top:-8px;right:-8px;background:#fff;color:#111;font-size:.68rem;min-width:20px;height:20px;border-radius:10px;display:none;place-items:center;padding:0 5px;font-weight:800}
+.badge.on{display:grid}
+.page-hero{padding:150px 0 70px;text-align:center;position:relative;overflow:hidden;
+  background:radial-gradient(ellipse at 50% 0%,rgba(74,92,255,.3),transparent 60%),radial-gradient(ellipse at 50% 100%,rgba(212,166,74,.12),transparent 60%),var(--noir)}
+.page-hero h1{font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(2.2rem,5vw,3.8rem);line-height:1.05;margin:14px 0 18px}
+.page-hero p{color:var(--gris);max-width:680px;margin:0 auto}
+.ariane{font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;color:var(--gris);margin-bottom:6px}
+.ariane a{color:var(--or)}
+
+/* Rayons (accueil) */
+.rayons{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rayon{position:relative;border-radius:10px;padding:40px 30px;min-height:300px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;border:1px solid rgba(212,166,74,.25);cursor:pointer;transition:.35s;background:var(--carte)}
+.rayon::before{content:"";position:absolute;inset:0;background:var(--fond);opacity:.7;transition:.35s}
+.rayon:hover{transform:translateY(-8px);border-color:var(--or);box-shadow:0 20px 50px rgba(212,166,74,.18)}
+.rayon:hover::before{opacity:1}
+.rayon>*{position:relative}
+.rayon .gros-ico{position:absolute;top:28px;right:28px;width:70px;height:70px;stroke:var(--or);fill:none;stroke-width:1.2;opacity:.8}
+.rayon .nb{font-family:'Cinzel',serif;color:var(--or);font-size:.9rem;letter-spacing:.1em}
+.rayon h3{font-weight:900;font-style:italic;text-transform:uppercase;font-size:1.6rem;line-height:1.1;margin:6px 0 10px}
+.rayon p{color:#c9c7cf;font-size:.9rem;margin-bottom:16px}
+.rayon .sous{display:flex;flex-wrap:wrap;gap:6px}
+.rayon .sous span{font-size:.72rem;background:rgba(7,7,10,.6);border:1px solid rgba(212,166,74,.3);padding:4px 10px;border-radius:20px;color:var(--or-clair)}
+.r-son{--fond:radial-gradient(circle at 80% 0%,rgba(110,70,255,.55),transparent 60%)}
+.r-mob{--fond:radial-gradient(circle at 80% 0%,rgba(212,166,74,.4),transparent 60%)}
+.r-deco{--fond:radial-gradient(circle at 80% 0%,rgba(30,160,120,.45),transparent 60%)}
+
+/* Location / catalogue */
+.cat-layout{display:grid;grid-template-columns:260px 1fr;gap:34px;align-items:start}
+.filtres{position:sticky;top:90px;background:var(--carte);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:22px;max-height:calc(100vh - 110px);overflow:auto}
+.filtres h4{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin:18px 0 10px}
+.filtres h4:first-child{margin-top:0}
+.f-btn{display:flex;justify-content:space-between;width:100%;background:none;border:none;color:var(--texte);font-family:inherit;font-size:.86rem;padding:7px 10px;border-radius:5px;cursor:pointer;text-align:left;transition:.2s}
+.f-btn:hover{background:rgba(212,166,74,.08)}
+.f-btn.on{background:var(--grad-or);color:#1a1205;font-weight:700}
+.f-btn small{opacity:.7}
+.f-btn.rayon-btn{font-weight:800;text-transform:uppercase;font-size:.8rem;letter-spacing:.05em}
+.f-sous{padding-left:10px;border-left:1px solid rgba(212,166,74,.2);margin:2px 0 8px 10px}
+.barre-cat{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:space-between;margin-bottom:22px}
+.recherche{flex:1;min-width:220px;position:relative}
+.recherche input{width:100%;padding-left:42px}
+.recherche svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);width:18px;stroke:var(--gris);fill:none;stroke-width:2}
+.toggle{display:flex;border:1px solid rgba(212,166,74,.4);border-radius:6px;overflow:hidden}
+.toggle button{background:none;border:none;color:var(--texte);padding:10px 16px;font-family:inherit;font-weight:700;font-size:.78rem;cursor:pointer;letter-spacing:.08em}
+.toggle button.on{background:var(--grad-or);color:#1a1205}
+.compte{color:var(--gris);font-size:.85rem;margin-bottom:16px}
+.compte strong{color:var(--or-clair)}
+.produits{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+.produit{background:var(--carte);border:1px solid rgba(255,255,255,.07);border-radius:9px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+.produit:hover{border-color:rgba(212,166,74,.6);transform:translateY(-4px)}
+.produit .vis{height:110px;display:grid;place-items:center;background:var(--fond);position:relative}
+.produit .vis svg{width:46px;height:46px;stroke:var(--or-clair);fill:none;stroke-width:1.3}
+.produit .vis .tag{position:absolute;top:10px;left:10px;font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;background:rgba(7,7,10,.7);color:var(--or-clair);padding:3px 8px;border-radius:12px}
+.produit .corps{padding:14px 16px 16px;display:flex;flex-direction:column;flex:1}
+.produit h5{font-size:.92rem;font-weight:700;line-height:1.3;margin-bottom:10px;flex:1}
+.prix{font-weight:800;font-size:1.15rem}
+.prix small{font-size:.7rem;font-weight:500;color:var(--gris)}
+.prix.devis{font-size:.9rem;color:var(--or-clair);font-style:italic}
+.ajout{display:flex;gap:8px;margin-top:12px}
+.qte{display:flex;align-items:center;border:1px solid rgba(255,255,255,.15);border-radius:5px}
+.qte button{background:none;border:none;color:var(--texte);width:28px;height:34px;cursor:pointer;font-size:1rem}
+.qte span{min-width:22px;text-align:center;font-weight:700;font-size:.85rem}
+.ajout .btn{flex:1;padding:8px 10px;font-size:.7rem;justify-content:center}
+.ajout .btn.ok{background:#2c7a3f;color:#fff;box-shadow:none}
+.vide{text-align:center;color:var(--gris);padding:60px 0;grid-column:1/-1}
+.v-son{--fond:radial-gradient(circle at 50% 120%,rgba(110,70,255,.45),#101016 70%)}
+.v-mob{--fond:radial-gradient(circle at 50% 120%,rgba(212,166,74,.35),#101016 70%)}
+.v-deco{--fond:radial-gradient(circle at 50% 120%,rgba(30,160,120,.38),#101016 70%)}
+
+/* Prestations détaillées */
+.bloc{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;padding:60px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.bloc:last-child{border-bottom:none}
+.bloc.inverse .bloc-visuel{order:-1}
+.bloc h3{font-weight:900;font-style:italic;text-transform:uppercase;font-size:clamp(1.6rem,3vw,2.3rem);line-height:1.1;margin:10px 0 16px}
+.bloc p{color:var(--gris);margin-bottom:16px}
+.puces{list-style:none;margin:0 0 26px}
+.puces li{padding:8px 0 8px 30px;position:relative;border-bottom:1px solid rgba(255,255,255,.05);font-size:.95rem}
+.puces li::before{content:"";position:absolute;left:0;top:14px;width:14px;height:10px;background:var(--grad-or);clip-path:polygon(0 100%,10% 30%,30% 60%,50% 0,70% 60%,90% 30%,100% 100%)}
+.bloc-visuel{aspect-ratio:4/3;border-radius:12px;border:1px solid rgba(212,166,74,.3);display:grid;place-items:center;background:var(--fond);position:relative;overflow:hidden}
+.bloc-visuel svg{width:38%;stroke:var(--or-clair);fill:none;stroke-width:.9;filter:drop-shadow(0 0 25px rgba(212,166,74,.35))}
+.bloc-visuel .lbl{position:absolute;bottom:18px;left:20px;font-family:'Cinzel',serif;color:var(--or);letter-spacing:.2em;font-size:.8rem}
+.ambiances{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.ambiance{background:var(--carte);border:1px solid rgba(212,166,74,.2);border-radius:8px;padding:22px 18px;text-align:center;cursor:pointer;transition:.25s}
+.ambiance:hover{border-color:var(--or);transform:translateY(-4px);background:linear-gradient(180deg,rgba(212,166,74,.12),var(--carte))}
+.ambiance .em{font-size:1.9rem;display:block;margin-bottom:8px}
+.ambiance strong{display:block;font-weight:800;font-size:.95rem}
+.ambiance small{color:var(--gris);font-size:.75rem}
+
+/* FAQ */
+.faq{max-width:820px;margin:0 auto}
+.faq details{border-bottom:1px solid rgba(212,166,74,.2);padding:20px 0}
+.faq summary{cursor:pointer;font-weight:700;font-size:1.05rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
+.faq summary::after{content:"+";color:var(--or);font-size:1.5rem;line-height:1;transition:.3s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--gris);margin-top:12px}
+
+/* Valeurs */
+.valeurs{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.valeur{text-align:center;padding:36px 26px;border:1px solid rgba(212,166,74,.25);border-radius:10px;background:var(--carte)}
+.valeur .num{font-family:'Cinzel',serif;font-size:2.4rem;font-weight:700}
+.valeur h3{font-weight:900;font-style:italic;text-transform:uppercase;margin:8px 0 10px}
+.valeur p{color:var(--gris);font-size:.92rem}
+
+/* Réalisations (à compléter) */
+.real-vide{border:1px dashed rgba(212,166,74,.45);border-radius:12px;padding:50px 30px;text-align:center;color:var(--gris)}
+.real-vide strong{color:var(--or-clair)}
+
+/* Devis + panier */
+.selection{background:var(--carte);border:1px solid rgba(212,166,74,.3);border-radius:10px;padding:26px;margin-bottom:22px}
+.selection h4{font-weight:900;font-style:italic;text-transform:uppercase;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.selection h4 a{font-size:.7rem;font-style:normal;letter-spacing:.12em;color:var(--or)}
+.ligne-sel{display:grid;grid-template-columns:1fr auto auto auto;gap:10px;align-items:center;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06);font-size:.88rem}
+.ligne-sel .px{color:var(--or-clair);font-weight:700;min-width:80px;text-align:right}
+.ligne-sel .suppr{background:none;border:none;color:var(--gris);cursor:pointer;font-size:1.1rem}
+.ligne-sel .suppr:hover{color:#ff7a7a}
+.totaux{margin-top:14px;font-size:.92rem}
+.totaux div{display:flex;justify-content:space-between;padding:4px 0}
+.totaux .grand{font-size:1.15rem;font-weight:800;color:var(--or-clair)}
+.totaux small{color:var(--gris);display:block;margin-top:8px;font-size:.75rem}
+.sel-vide{color:var(--gris);font-size:.9rem}
+.mentions{max-width:820px;margin:0 auto;color:var(--gris)}
+.mentions h3{color:var(--texte);font-weight:800;margin:28px 0 8px}
+.mentions .a-remplir{color:var(--or-clair);background:rgba(212,166,74,.1);padding:1px 6px;border-radius:4px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--grad-or);color:#1a1205;font-weight:700;padding:12px 22px;border-radius:6px;z-index:100;transition:.35s;box-shadow:0 10px 40px rgba(0,0,0,.5);font-size:.88rem}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.foot-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:30px;margin-bottom:30px}
+.foot-grid h5{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--or);margin-bottom:14px}
+.foot-grid a{display:block;color:var(--gris);font-size:.88rem;padding:4px 0}
+.foot-grid a:hover{color:var(--or-clair)}
+.foot-grid p{color:var(--gris);font-size:.88rem;margin-top:12px}
+
+@media (max-width:1050px){.rayons{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  .cat-layout{grid-template-columns:1fr}
+  .filtres{position:static;max-height:none}
+  .bloc{grid-template-columns:1fr;gap:30px}
+  .bloc.inverse .bloc-visuel{order:0}
+  .valeurs{grid-template-columns:1fr}
+}
+@media (max-width:560px){.produits{grid-template-columns:1fr 1fr}.foot-grid{grid-template-columns:1fr}.ligne-sel{grid-template-columns:1fr auto auto}.ligne-sel .px{display:none}}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header id="header">
+  <div class="wrap nav">
+    <a href="#accueil" class="logo-txt">
+      <svg viewBox="0 0 30 22"><path d="M2 20 L4 6 L10 12 L15 2 L20 12 L26 6 L28 20 Z" fill="#d4a64a"/></svg>
+      <span>ALL IN<small>ÉVENT</small></span>
+    </a>
+    <ul class="menu menu-principal" id="menu">
+      <li><a href="#location" data-v="location">Location</a></li>
+      <li><a href="#prestations" data-v="prestations">Prestations</a></li>
+      <li><a href="#casino" data-v="casino">Casino</a></li>
+      <li><a href="#evenements" data-v="evenements">Événements</a></li>
+      <li><a href="#agence" data-v="agence">L'agence</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="tel" href="tel:0612262054">06 12 26 20 54</a>
+      <a href="#devis" class="btn btn-or panier-btn">Mon devis<span class="badge" id="badge">0</span></a>
+      <button class="burger" id="burger" aria-label="Ouvrir le menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<!-- ================= ACCUEIL ================= -->
+<div class="vue" id="v-accueil">
+  <section class="hero" data-img="hero">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline preload="auto" aria-hidden="true"></video>
+    <div class="hero-voile"></div>
+    <div class="faisceau f1"></div><div class="faisceau f2"></div><div class="faisceau f3"></div>
+    <div class="wrap hero-contenu">
+      <img class="hero-logo" src="__LOGOPNG__" alt="All In Évent">
+      <h1>Créons ensemble des événements <span class="or">inoubliables</span></h1>
+      <p class="accroche">Location de son, lumière, mobilier et décoration, ou organisation clé en main : All In Évent équipe, décore et anime vos événements, de la première idée au dernier carton rangé.</p>
+      <div class="hero-btns">
+        <a href="#location" class="btn btn-or">Voir le catalogue</a>
+        <a href="#devis" class="btn btn-ligne">Demander un devis</a>
+      </div>
+      <div class="publics">Particuliers <span>•</span> Entreprises <span>•</span> Collectivités</div>
+    </div>
+  </section>
+
+  <section class="atouts">
+    <div class="wrap">
+      <div class="atouts-grid reveal">
+        <div class="atout"><svg viewBox="0 0 24 24"><path d="M11 17l-2 2a2 2 0 0 1-3-3l4-4 3 1 3-3"/><path d="M2 12l4-4 4 1 3-3 4 1 5 5-4 4"/></svg><p>Un service<br>professionnel</p></div>
+        <div class="atout"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></svg><p>Des solutions<br>sur mesure</p></div>
+        <div class="atout"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><p>Une organisation<br>clé en main</p></div>
+        <div class="atout"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2" stroke-linecap="round"/><circle cx="9" cy="9.5" r=".6"/><circle cx="15" cy="9.5" r=".6"/></svg><p>Des moments<br>inoubliables</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sur-titre">Location de matériel</div>
+      <h2 class="titre">Trois rayons, <span class="or" id="totalProduits">200+</span> références</h2>
+      <p class="intro">Chaque article se loue à l'unité, avec un prix affiché à la journée. Composez votre sélection, on vous livre et on installe.</p>
+      <div class="rayons" id="rayonsAccueil"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Nous confier votre événement</div>
+      <h2 class="titre">Tout pour <span class="or">faire vibrer</span> votre événement</h2>
+      <p class="intro">Une seule équipe pour l'animation, la technique et l'ambiance. Choisissez une prestation ou combinez-les.</p>
+      <div class="cartes">
+        <a href="#casino" class="carte c1 reveal" data-img="casino"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6"/></svg></div><h3>Casino</h3><p>Vivez l'expérience d'un véritable casino : tables de jeu, jetons et ambiance Las Vegas.</p><span class="lien-carte" style="position:relative;margin-top:18px;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or-clair)">Découvrir →</span></a>
+        <a href="#prestations" class="carte c2 reveal" data-img="gonflable"><div class="ico"><svg viewBox="0 0 24 24"><path d="M3 20h18M4 20V10l2-3 2 3v10M16 20V10l2-3 2 3v10M8 20v-6h8v6M8 14c0-3 8-3 8 0"/></svg></div><h3>Structures gonflables</h3><p>Du fun pour petits et grands ! Châteaux, toboggans et parcours pour animer vos fêtes.</p><span style="position:relative;margin-top:18px;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or-clair)">Découvrir →</span></a>
+        <a href="#prestations" class="carte c3 reveal" data-img="technique"><div class="ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div><h3>Son &amp; Lumière</h3><p>Une ambiance unique : sonorisation, jeux de lumière, effets spéciaux et régie technique.</p><span style="position:relative;margin-top:18px;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or-clair)">Découvrir →</span></a>
+        <a href="#prestations" class="carte c4 reveal" data-img="teambuilding"><div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="8" r="2.5"/><path d="M3 20v-2a5 5 0 0 1 10 0v2M14 20v-1.5a4 4 0 0 1 7-2.5"/></svg></div><h3>Team Building</h3><p>Renforcez vos équipes autrement avec des activités qui fédèrent et qui marquent.</p><span style="position:relative;margin-top:18px;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or-clair)">Découvrir →</span></a>
+        <a href="#prestations" class="carte c5 reveal" data-img="scenographie"><div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z"/></svg></div><h3>Décor sur mesure</h3><p>Un projet unique ? Nous le réalisons ! Scénographie et décors à thème pensés pour vous.</p><span style="position:relative;margin-top:18px;font-size:.75rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--or-clair)">Découvrir →</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Clé en main</div>
+      <h2 class="titre">Comment <span class="or">ça marche ?</span></h2>
+      <p class="intro">De la première prise de contact au rangement du matériel, vous n'avez rien à gérer.</p>
+      <div class="etapes">
+        <div class="etape reveal"><h3>Vous choisissez</h3><p>Parcourez le catalogue et ajoutez le matériel à votre devis, ou décrivez-nous simplement votre projet.</p></div>
+        <div class="etape reveal"><h3>On construit l'offre</h3><p>Nous vérifions les disponibilités et vous envoyons un devis clair, adapté à votre budget.</p></div>
+        <div class="etape reveal"><h3>On livre et on installe</h3><p>Le jour J, notre équipe livre, monte et règle tout. Vous profitez.</p></div>
+        <div class="etape reveal"><h3>On démonte</h3><p>Après l'événement, on reprend le matériel. Il ne vous reste que les souvenirs.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="bandeau">
+    <div class="wrap">
+      <h2>Faites de vos événements<br><span class="or">un moment d'exception</span><br>avec All In Évent !</h2>
+      <a href="#devis" class="btn btn-or">Je demande mon devis</a>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sur-titre">Questions fréquentes</div>
+      <h2 class="titre">Vous vous <span class="or">demandez…</span></h2>
+      <div class="faq" id="faqAccueil"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= LOCATION / CATALOGUE ================= -->
+<div class="vue" id="v-location">
+  <div class="page-hero" data-img="Éclairage">
+    <div class="wrap">
+      <div class="ariane"><a href="#accueil">Accueil</a> / Location</div>
+      <h1>Location de <span class="or">matériel</span></h1>
+      <p>Sono, lumière, vidéo, mobilier et décoration : chaque pièce se loue seule, prix à la journée. Ajoutez vos articles au devis, on s'occupe de la livraison et de l'installation.</p>
+    </div>
+  </div>
+  <section style="padding-top:40px">
+    <div class="wrap cat-layout">
+      <aside class="filtres" id="filtres"></aside>
+      <div>
+        <div class="barre-cat">
+          <div class="recherche">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg>
+            <input id="recherche" placeholder="Rechercher un article (lyre, sapin, bar…)">
+          </div>
+          <div class="toggle" id="toggleTaxe"><button data-t="ht" class="on">HT</button><button data-t="ttc">TTC</button></div>
+        </div>
+        <p class="compte" id="compte"></p>
+        <p style="font-size:.75rem;color:#6d6b75;margin:-10px 0 16px">Photos d'illustration non contractuelles.</p>
+        <div class="produits" id="produits"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= PRESTATIONS ================= -->
+<div class="vue" id="v-prestations">
+  <div class="page-hero" data-img="technique">
+    <div class="wrap">
+      <div class="ariane"><a href="#accueil">Accueil</a> / Prestations</div>
+      <h1>Nos <span class="or">prestations</span></h1>
+      <p>Vous nous confiez l'événement : on le conçoit, on installe, on assure la technique pendant la soirée si besoin, puis on démonte.</p>
+    </div>
+  </div>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="bloc reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">01 — Technique</div>
+          <h3>Son, lumière <span class="or">&amp; vidéo</span></h3>
+          <p>Un son propre, une lumière qui sublime le lieu et des écrans qui portent votre message : on dimensionne le dispositif selon la salle et le nombre d'invités.</p>
+          <ul class="puces"><li>Étude du lieu et plan d'implantation</li><li>Sonorisation, micros HF, éclairage scénique et d'ambiance</li><li>Écrans LED, vidéo, effets spéciaux (étincelles froides, fumée lourde)</li><li>Régie technique pendant l'événement si besoin</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Prestation technique (son, lumière, vidéo)">Demander un devis</a>
+        </div>
+        <div data-img="technique" class="bloc-visuel v-son"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg><span class="lbl">SON • LUMIÈRE • VIDÉO</span></div>
+      </div>
+
+      <div class="bloc inverse reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">02 — Scénographie</div>
+          <h3>Décor &amp; <span class="or">scénographie</span></h3>
+          <p>On imagine un univers complet autour de votre thème : façades, statues, végétaux, luminaires et accessoires, mis en scène pour créer un vrai décor.</p>
+          <ul class="puces"><li>Proposition d'ambiance et sélection des pièces</li><li>Installation et mise en lumière du décor</li><li>Plus de 100 éléments de décoration disponibles</li><li>Démontage et reprise après l'événement</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Scénographie / décor">Demander un devis</a>
+        </div>
+        <div data-img="scenographie" class="bloc-visuel v-deco"><svg viewBox="0 0 24 24"><path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z"/></svg><span class="lbl">SCÉNOGRAPHIE</span></div>
+      </div>
+
+      <div class="bloc reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">03 — Sur mesure</div>
+          <h3>Décoration <span class="or">sur mesure</span></h3>
+          <p>Un élément introuvable, une idée précise, un décor à votre image ? On le conçoit et on le fabrique pour votre événement.</p>
+          <ul class="puces"><li>Décors et pièces personnalisés</li><li>Panneaux et signalétique à vos couleurs</li><li>Accompagnement de l'idée jusqu'à l'installation</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Décoration sur mesure">Parler de mon projet</a>
+        </div>
+        <div data-img="surmesure" class="bloc-visuel v-mob"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.8-3.8a6 6 0 0 1-7.9 7.9l-6.9 6.9a2.1 2.1 0 0 1-3-3l6.9-6.9a6 6 0 0 1 7.9-7.9z"/></svg><span class="lbl">SUR MESURE</span></div>
+      </div>
+
+      <div class="bloc inverse reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">04 — Animation</div>
+          <h3>Structures <span class="or">gonflables</span></h3>
+          <p>Châteaux, toboggans et parcours : de quoi occuper les enfants (et les plus grands) pendant les anniversaires, kermesses et fêtes de quartier.</p>
+          <ul class="puces"><li>Livraison, gonflage et installation</li><li>Pour les particuliers, écoles et collectivités</li><li>Combinable avec le son et la décoration</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Structures gonflables">Demander un devis</a>
+        </div>
+        <div data-img="gonflable" class="bloc-visuel v-son" style="--fond:radial-gradient(circle at 50% 120%,rgba(30,140,255,.45),#101016 70%)"><svg viewBox="0 0 24 24"><path d="M3 20h18M4 20V10l2-3 2 3v10M16 20V10l2-3 2 3v10M8 20v-6h8v6M8 14c0-3 8-3 8 0"/></svg><span class="lbl">STRUCTURES GONFLABLES</span></div>
+      </div>
+
+      <div class="bloc reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">05 — Entreprises</div>
+          <h3>Team <span class="or">building</span></h3>
+          <p>Des activités pensées pour rapprocher vos équipes : défis, jeux, soirée casino… dans vos locaux ou sur le lieu de votre choix.</p>
+          <ul class="puces"><li>Programme adapté à la taille de l'équipe</li><li>Animation et matériel fournis</li><li>Peut s'intégrer à un séminaire ou une soirée</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Team building">Demander un devis</a>
+        </div>
+        <div data-img="teambuilding" class="bloc-visuel v-mob" style="--fond:radial-gradient(circle at 50% 120%,rgba(255,140,30,.4),#101016 70%)"><svg viewBox="0 0 24 24"><circle cx="9" cy="7" r="3"/><circle cx="17" cy="8" r="2.5"/><path d="M3 20v-2a5 5 0 0 1 10 0v2M14 20v-1.5a4 4 0 0 1 7-2.5"/></svg><span class="lbl">TEAM BUILDING</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Décors à thème</div>
+      <h2 class="titre">Choisissez votre <span class="or">ambiance</span></h2>
+      <p class="intro">Cliquez sur un thème : on l'ajoute à votre demande de devis et on vous propose une sélection de pièces.</p>
+      <div class="ambiances" id="ambiances"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= CASINO ================= -->
+<div class="vue" id="v-casino">
+  <section class="casino" style="padding-top:150px" data-img="casino" data-brut="1" id="sectionCasino">
+    <div class="wrap casino-grid">
+      <div class="reveal">
+        <div class="ariane"><a href="#accueil">Accueil</a> / Animation casino</div>
+        <div class="sur-titre">Animation phare</div>
+        <h2 class="titre">Votre soirée <span class="or">casino</span></h2>
+        <p>Transformez votre événement en véritable salle de jeu. Nos croupiers installent les tables, animent les parties toute la soirée, puis repartent avec le matériel. Vos invités vivent l'expérience d'un vrai casino, sans aucun enjeu d'argent réel.</p>
+        <p>Idéal pour un anniversaire, un mariage, une soirée d'entreprise ou un gala.</p>
+        <div class="jeux"><span>Blackjack</span><span>Roulette</span><span>Poker</span><span>Ultimate Poker</span><span>Chuck-a-Luck</span></div>
+        <a href="#devis" class="btn btn-or" data-msg="Animation casino">Réserver le casino</a>
+      </div>
+      <div class="roulette-box reveal">
+        <svg class="roulette" viewBox="0 0 200 200" id="roulette"></svg>
+        <div class="jeton j1">ALL</div><div class="jeton j2">IN</div><div class="jeton j3">♠</div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="sur-titre">Les jeux</div>
+      <h2 class="titre">Cinq tables, <span class="or">une ambiance</span></h2>
+      <div class="cartes" style="margin-top:40px">
+        <div class="carte c1 reveal"><h3>Blackjack</h3><p>Le grand classique : battre le croupier sans dépasser 21. Rapide à apprendre, parfait pour tous.</p></div>
+        <div class="carte c3 reveal"><h3>Roulette</h3><p>Rouge ou noir, pair ou impair, un numéro plein… La table qui rassemble le plus de monde.</p></div>
+        <div class="carte c2 reveal"><h3>Poker</h3><p>Le Texas Hold'em pour les amateurs de stratégie et de bluff, encadré par un croupier.</p></div>
+        <div class="carte c4 reveal"><h3>Ultimate Poker</h3><p>Une variante où chaque joueur affronte la banque. Accessible, avec du suspense à chaque main.</p></div>
+        <div class="carte c5 reveal"><h3>Chuck-a-Luck</h3><p>Trois dés dans une cage : un jeu de hasard simple et festif pour les débutants.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Déroulé</div>
+      <h2 class="titre">Une soirée <span class="or">clé en main</span></h2>
+      <div class="etapes" style="margin-top:40px">
+        <div class="etape reveal"><h3>Installation</h3><p>Les croupiers arrivent avant vos invités et montent les tables.</p></div>
+        <div class="etape reveal"><h3>Distribution des jetons</h3><p>Chaque invité reçoit sa mise de départ en jetons fictifs.</p></div>
+        <div class="etape reveal"><h3>Les parties</h3><p>Les croupiers expliquent les règles et animent les tables.</p></div>
+        <div class="etape reveal"><h3>Remise des lots</h3><p>En option, les plus gros gagnants remportent les lots que vous prévoyez.</p></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= ÉVÉNEMENTS ================= -->
+<div class="vue" id="v-evenements">
+  <div class="page-hero" data-img="mariage">
+    <div class="wrap">
+      <div class="ariane"><a href="#accueil">Accueil</a> / Événements</div>
+      <h1>Votre <span class="or">événement</span></h1>
+      <p>Chaque occasion a ses codes. Voici comment on vous accompagne selon le type d'événement.</p>
+    </div>
+  </div>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="bloc reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">Mariage</div>
+          <h3>Le plus beau jour, <span class="or">sans stress</span></h3>
+          <p>Cérémonie, cocktail, dîner et soirée dansante : on gère le son, la lumière, le mobilier et la décoration pour que vous profitiez de chaque instant.</p>
+          <ul class="puces"><li>Piste de danse, éclairage d'ambiance, guirlandes</li><li>Tables, nappes, bar et espace lounge</li><li>Photobooth et animation casino pour la soirée</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Mariage">Préparer mon mariage</a>
+        </div>
+        <div data-img="mariage" class="bloc-visuel v-mob"><svg viewBox="0 0 24 24"><circle cx="9" cy="14" r="6"/><circle cx="15" cy="14" r="6"/><path d="M10 4l2-2 2 2-2 2z"/></svg><span class="lbl">MARIAGE</span></div>
+      </div>
+      <div class="bloc inverse reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">Soirée d'entreprise</div>
+          <h3>Marquez <span class="or">les esprits</span></h3>
+          <p>Séminaire, lancement, vœux ou soirée annuelle : un dispositif technique fiable et une ambiance qui reflète votre image.</p>
+          <ul class="puces"><li>Pupitre, micros, écrans et vidéo pour les prises de parole</li><li>Scénographie et décor à thème</li><li>Team building et casino pour la partie festive</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Soirée d'entreprise">Organiser ma soirée</a>
+        </div>
+        <div data-img="entreprise" class="bloc-visuel v-son"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span class="lbl">ENTREPRISE</span></div>
+      </div>
+      <div class="bloc reveal">
+        <div>
+          <div class="sur-titre" style="justify-content:flex-start">Noël &amp; fin d'année</div>
+          <h3>La magie <span class="or">des fêtes</span></h3>
+          <p>Sapins, bonshommes de neige, casse-noisettes géants, chalet et rennes lumineux : un décor de Noël complet pour votre arbre de Noël, marché ou soirée de fin d'année.</p>
+          <ul class="puces"><li>Décors d'hiver et de montagne</li><li>Mascottes et statues de Noël</li><li>Mise en lumière et sonorisation</li></ul>
+          <a href="#devis" class="btn btn-or" data-msg="Noël et fin d'année">Nous confier le décor</a>
+        </div>
+        <div data-img="noel" class="bloc-visuel v-deco"><svg viewBox="0 0 24 24"><path d="M12 2l5 7h-3l4 6h-3l3 5H6l3-5H6l4-6H7z"/><path d="M12 20v2"/></svg><span class="lbl">NOËL</span></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= AGENCE ================= -->
+<div class="vue" id="v-agence">
+  <div class="page-hero" data-img="entreprise">
+    <div class="wrap">
+      <div class="ariane"><a href="#accueil">Accueil</a> / L'agence</div>
+      <h1>Qui <span class="or">sommes-nous ?</span></h1>
+      <p>All In Évent est une agence événementielle qui équipe, décore et anime les événements des particuliers, des entreprises et des collectivités.</p>
+    </div>
+  </div>
+  <section style="padding-top:20px">
+    <div class="wrap">
+      <div class="valeurs">
+        <div class="valeur reveal"><div class="num or">01</div><h3>Sur mesure</h3><p>Chaque événement est différent : on part de votre idée, pas d'un modèle tout fait.</p></div>
+        <div class="valeur reveal"><div class="num or">02</div><h3>Disponibilité</h3><p>Un interlocuteur unique, joignable et réactif, de la demande de devis au démontage.</p></div>
+        <div class="valeur reveal"><div class="num or">03</div><h3>Exigence</h3><p>Du matériel vérifié avant chaque sortie et une équipe qui soigne les détails.</p></div>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Réalisations</div>
+      <h2 class="titre">Nos <span class="or">événements</span></h2>
+      <div class="real-vide">
+        <p><strong>Espace réservé à vos réalisations.</strong><br>Ajoutez ici les photos et le récit de vos propres événements (lieu, nombre d'invités, prestations réalisées).</p>
+      </div>
+    </div>
+  </section>
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sur-titre">Questions fréquentes</div>
+      <h2 class="titre">On vous <span class="or">répond</span></h2>
+      <div class="faq" id="faqAgence"></div>
+    </div>
+  </section>
+</div>
+
+<!-- ================= DEVIS ================= -->
+<div class="vue" id="v-devis">
+  <div class="page-hero" data-img="Luminaires et lanternes">
+    <div class="wrap">
+      <div class="ariane"><a href="#accueil">Accueil</a> / Devis</div>
+      <h1>Parlons de <span class="or">votre projet</span></h1>
+      <p>Vérifiez votre sélection, remplissez le formulaire en 3 étapes ou contactez-nous directement.</p>
+    </div>
+  </div>
+  <section style="padding-top:20px">
+    <div class="wrap devis-grid">
+      <div>
+        <div class="selection" id="selection"></div>
+        <div class="contact-box">
+          <h3>All In <span class="or">Évent</span></h3>
+                    <div class="contact-ligne"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:quentinlo@icloud.com">quentinlo@icloud.com</a></div>
+          <div class="contact-ligne"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a href="tel:0612262054">06 12 26 20 54</a></div>
+          <p class="petit">Particuliers • Entreprises • Collectivités</p>
+        </div>
+      </div>
+
+      <form class="devis" id="formDevis" name="devis" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" novalidate>
+        <input type="hidden" name="form-name" value="devis">
+        <input type="hidden" name="numero" id="champNumero">
+        <input type="hidden" name="selection" id="champSelection">
+        <input type="file" name="devis_pdf" accept="application/pdf" hidden>
+        <input type="hidden" name="estimation" id="champEstimation">
+        <p style="display:none"><label>Ne pas remplir : <input name="bot-field"></label></p>
+        <div class="progression"><div class="actif"></div><div></div><div></div></div>
+        <div class="etape-form visible">
+          <h4><span>01</span>Vos coordonnées</h4>
+          <div class="champs">
+            <div class="champ"><label for="nom">Nom et prénom *</label><input id="nom" name="nom" required></div>
+            <div class="champ"><label for="tel">Téléphone *</label><input id="tel" name="tel" type="tel" required></div>
+            <div class="champ full"><label for="email">Email *</label><input id="email" name="email" type="email" required></div>
+            <div class="champ full"><label for="societe">Société / organisme (facultatif)</label><input id="societe" name="societe"></div>
+            <div class="champ full"><label>Vous êtes</label>
+              <div class="choix">
+                <label><input type="radio" name="profil" value="Particulier" checked>Particulier</label>
+                <label><input type="radio" name="profil" value="Entreprise">Entreprise</label>
+                <label><input type="radio" name="profil" value="Collectivité">Collectivité</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="etape-form">
+          <h4><span>02</span>Votre événement</h4>
+          <div class="champs">
+            <div class="champ"><label for="type">Type d'événement</label>
+              <select id="type" name="type"><option>Anniversaire</option><option>Mariage</option><option>Soirée d'entreprise</option><option>Séminaire</option><option>Team building</option><option>Noël / fin d'année</option><option>Fête de quartier / commune</option><option>Autre</option></select>
+            </div>
+            <div class="champ"><label for="date">Date</label><input id="date" name="date" type="date"></div>
+            <div class="champ"><label for="jours">Durée de location (jours)</label><input id="jours" name="jours" type="number" min="1" value="1"></div>
+            <div class="champ"><label for="invites">Nombre d'invités</label><input id="invites" name="invites" type="number" min="1" placeholder="ex : 80"></div>
+            <div class="champ full"><label for="lieu">Ville / lieu *</label><input id="lieu" name="lieu" required></div>
+          </div>
+        </div>
+        <div class="etape-form">
+          <h4><span>03</span>Votre projet</h4>
+          <div class="champs">
+            <div class="champ full"><label>Prestations souhaitées</label>
+              <div class="choix" id="choixPresta">
+                <label><input type="checkbox" name="presta" value="Location de matériel">Location de matériel</label>
+                <label><input type="checkbox" name="presta" value="Animation casino">Casino</label>
+                <label><input type="checkbox" name="presta" value="Structures gonflables">Structures gonflables</label>
+                <label><input type="checkbox" name="presta" value="Prestation technique (son, lumière, vidéo)">Son &amp; Lumière</label>
+                <label><input type="checkbox" name="presta" value="Team building">Team Building</label>
+                <label><input type="checkbox" name="presta" value="Scénographie / décor">Décor</label>
+                <label><input type="checkbox" name="presta" value="Décoration sur mesure">Sur mesure</label>
+              </div>
+            </div>
+            <div class="champ full"><label for="message">Décrivez votre projet</label><textarea id="message" name="message" placeholder="Vos envies, votre budget, vos questions…"></textarea></div>
+          </div>
+        </div>
+        <p class="erreur" id="erreur"></p>
+        <div class="nav-form">
+          <button type="button" class="btn btn-ligne" id="prec" style="visibility:hidden">← Retour</button>
+          <button type="button" class="btn btn-or" id="suiv">Suivant →</button>
+        </div>
+        <div class="merci" id="merci">
+          <svg viewBox="0 0 30 22" width="60" style="margin:0 auto"><path d="M2 20 L4 6 L10 12 L15 2 L20 12 L26 6 L28 20 Z" fill="#d4a64a"/></svg>
+          <h4 id="merciTitre">Envoi en cours…</h4>
+          <p id="merciTexte"></p>
+        </div>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ================= MENTIONS LÉGALES ================= -->
+<div class="vue" id="v-mentions">
+  <div class="page-hero" data-img="hero"><div class="wrap"><div class="ariane"><a href="#accueil">Accueil</a> / Mentions légales</div><h1>Mentions <span class="or">légales</span></h1></div></div>
+  <section style="padding-top:20px">
+    <div class="mentions wrap">
+      <h3>Éditeur du site</h3>
+      <p>All In Évent — <span class="a-remplir">forme juridique</span> — SIRET <span class="a-remplir">à compléter</span><br>Adresse : <span class="a-remplir">à compléter</span><br>Email : quentinlo@icloud.com — Téléphone : 06 12 26 20 54<br>Directeur de la publication : <span class="a-remplir">à compléter</span></p>
+      <h3>Hébergement</h3>
+      <p><span class="a-remplir">Nom, adresse et téléphone de l'hébergeur</span></p>
+      <h3>Prix</h3>
+      <p>Les prix affichés sont indiqués en euros, hors taxes (HT) et toutes taxes comprises (TTC, TVA 20 %), pour une journée de location. Ils n'incluent pas la livraison, l'installation ni la caution, précisées sur le devis. Seul le devis signé fait foi.</p>
+      <h3>Données personnelles</h3>
+      <p>Les informations transmises via le formulaire de devis servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni cédées. Vous pouvez demander leur consultation, rectification ou suppression en écrivant à quentinlo@icloud.com.</p>
+    </div>
+  </section>
+</div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="#accueil" class="logo-txt"><svg viewBox="0 0 30 22"><path d="M2 20 L4 6 L10 12 L15 2 L20 12 L26 6 L28 20 Z" fill="#d4a64a"/></svg><span>ALL IN<small>ÉVENT</small></span></a>
+        <p>Créons ensemble des événements inoubliables.<br>quentinlo@icloud.com<br>06 12 26 20 54</p>
+      </div>
+      <div><h5>Location</h5><a href="#location" data-r="son">Sono, lumière et vidéo</a><a href="#location" data-r="mob">Mobilier</a><a href="#location" data-r="deco">Décoration</a><a href="#location" data-r="">Tout le catalogue</a></div>
+      <div><h5>Prestations</h5><a href="#prestations">Technique</a><a href="#prestations">Scénographie</a><a href="#casino">Animation casino</a><a href="#evenements">Événements</a></div>
+      <div><h5>Agence</h5><a href="#agence">Qui sommes-nous</a><a href="#devis">Contact et devis</a><a href="#mentions">Mentions légales</a></div>
+    </div>
+    <p class="credit">Photos d'illustration : <a href="https://unsplash.com" target="_blank" rel="noopener">Unsplash</a> · Vidéo : <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a></p>
+    <p class="copy">© <span id="annee"></span> All In Évent — Particuliers • Entreprises • Collectivités</p>
+  </div>
+</footer>
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script>
+/* ============ DONNÉES ============ */
+const RAW = `__DATA__`;
+const RAYONS = {
+  son:  {nom:'Sono, lumière et vidéo', court:'Son & lumière', txt:'Sonorisation, micros, éclairage, effets spéciaux, écrans, scène, barnums et câblage.'},
+  mob:  {nom:'Mobilier', court:'Mobilier', txt:'Tables, assises, mange-debout, bars, lounge, nappes, pupitres et mobilier extérieur.'},
+  deco: {nom:'Décoration', court:'Décoration', txt:'Décors et façades, statues, végétaux, luminaires, tapis et accessoires pour tous les thèmes.'}
+};
+const ICONES = {
+  son:'<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>',
+  mob:'<path d="M4 10h16M6 10v10M18 10v10M4 6h16v4H4zM9 14h6"/>',
+  deco:'<path d="M12 2l3 6.5 7 .8-5.2 4.8 1.5 7-6.3-3.6-6.3 3.6 1.5-7L2 9.3l7-.8z"/>',
+  'Micros':'<rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v4M8 22h8"/>',
+  'Éclairage':'<path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/>',
+  'Effets spéciaux':'<path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/>',
+  'Écrans LED et vidéo':'<rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  'Photobooth':'<path d="M3 7h4l2-3h6l2 3h4v13H3z"/><circle cx="12" cy="13" r="4"/>',
+  'Scène et praticables':'<path d="M2 16h20v4H2zM4 16V8l8-5 8 5v8"/>',
+  'Tentes et barnums':'<path d="M2 20L12 4l10 16M12 4v16M7 20l5-8 5 8"/>',
+  'Électricité et câblage':'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+  'Chaises et assises':'<path d="M6 3v18M6 12h12v9M18 12V3"/>',
+  'Bars et comptoirs':'<path d="M8 22h8M12 15v7M5 3h14l-7 12z"/>',
+  'Plantes et végétaux':'<path d="M12 22V10M12 10C12 5 7 3 3 3c0 5 4 7 9 7zM12 13c0-4 4-6 9-6 0 4-4 6-9 6z"/>',
+  'Luminaires et lanternes':'<path d="M9 2h6M8 5h8l1 13H7zM10 18v3h4v-3"/>',
+  'Statues et personnages':'<circle cx="12" cy="6" r="3"/><path d="M8 22v-7l-2-4h12l-2 4v7"/>'
+};
+const ico = (p) => `<svg viewBox="0 0 24 24">${ICONES[p.cat] || ICONES[p.r]}</svg>`;
+const PRODUITS = RAW.trim().split('\n').map((l, i) => {
+  const [r, cat, nom, prix] = l.split('|');
+  return {id: i, r, cat, nom, prix: prix ? Number(prix) : null};
+});
+const CATS = {};
+PRODUITS.forEach(p => { (CATS[p.r] = CATS[p.r] || {}); CATS[p.r][p.cat] = (CATS[p.r][p.cat] || 0) + 1; });
+
+const AMBIANCES = [
+  ['🎄','Noël','Sapins, rennes, casse-noisettes'],['🏔️','Hiver & montagne','Chalet, luges, skis'],
+  ['🌾','Champêtre','Paille, osier, guirlandes'],['🌸','Garden party','Fleurs, lanternes, transats'],
+  ['🪗','Guinguette parisienne','Guirlandes, bancs, lampadaires'],['🥂','Gatsby','Or, plumes, tapis rouge'],
+  ['🎬','Cinéma','Oscars, caméras, projecteurs'],['🤠','Western','Saloon, tonneaux, selles'],
+  ['🌴','Plage & tropical','Palmiers, surf, paille'],['🦁','Savane & jungle','Lions, zèbres, bambous'],
+  ['🕌','Oriental','Poufs, tapis, lampes'],['🏮','Asiatique & japonais','Paravents, lampions, cerisiers']
+];
+const FAQ_ACCUEIL = [
+  ['Que fait une agence événementielle comme All In Évent ?','Nous fournissons le matériel (son, lumière, mobilier, décoration) et, si vous le souhaitez, nous prenons en charge toute l\'organisation : conception, installation, animation et démontage.'],
+  ['Puis-je louer un seul article ?','Oui. Chaque pièce du catalogue se loue à l\'unité, avec un prix affiché à la journée. Vous pouvez aussi combiner plusieurs articles et prestations dans un même devis.'],
+  ['Comment est calculé le prix ?','Le devis additionne le prix des articles, multiplié par le nombre de jours, plus la livraison, l\'installation et les éventuelles prestations (régie, animation). Les articles « sur devis » sont chiffrés selon votre besoin.'],
+  ['Les prix sont-ils HT ou TTC ?','Les prix sont affichés HT par défaut. Le bouton HT / TTC du catalogue permet de voir les prix avec la TVA (20 %).']
+];
+const FAQ_AGENCE = [
+  ['Livrez-vous et installez-vous le matériel ?','Oui, la livraison, l\'installation et le démontage peuvent être inclus. Les conditions sont précisées dans le devis.'],
+  ['Travaillez-vous avec les particuliers ?','Oui : particuliers, entreprises et collectivités. Anniversaire, mariage, séminaire ou fête de quartier, on adapte la prestation.'],
+  ['Le casino utilise-t-il de l\'argent réel ?','Non. Les parties se jouent avec des jetons fictifs, pour le plaisir du jeu. Vous pouvez prévoir des lots pour les gagnants.'],
+  ['Combien de temps à l\'avance faut-il réserver ?','Le plus tôt possible, surtout pour les week-ends et la période des fêtes. Contactez-nous pour vérifier les disponibilités à votre date.']
+];
+
+/* ============ PHOTOS (Unsplash, licence libre) ============ */
+const IMG = {
+  hero:'photo-1540039155733-5bb30b53aa14', technique:'photo-1459749411175-04bf5292ceea', scenographie:'photo-1747115276395-607f2e5dc269',
+  surmesure:'photo-1659930087003-2d64e33181f7', gonflable:'photo-1765947389722-2e96d8c0aad9', teambuilding:'photo-1774599661355-327e322f53c2',
+  casino:'photo-1592398191627-25b41eeaa398', mariage:'photo-1791394550126-bb4fa4ad7b2e', entreprise:'photo-1700514077430-3659e38eb5e7', noel:'photo-1512867616096-c91ed9daf1eb',
+  son:'photo-1470229722913-7c0e2dbbafd3', mob:'photo-1767961054378-4092dbeb7c3b', deco:'photo-1589830468294-765e8aba10a9',
+  'Sonorisation':'photo-1561314105-e6ac04c2984a', 'Micros':'photo-1527261834078-9b37d35a4a32', 'Éclairage':'photo-1657208431551-cbf415b8ef26',
+  'Effets spéciaux':'photo-1619229725920-ac8b63b0631a', 'Écrans LED et vidéo':'photo-1764257241003-e3464685770f', 'Photobooth':'photo-1746587224861-521244472226',
+  'Scène et praticables':'photo-1600779547877-be592ef5aad3', 'Tentes et barnums':'photo-1780682571078-242672d1dd59', 'Électricité et câblage':'photo-1687038520563-2310e8b06ed2',
+  'Tables':'photo-1561593367-66c79c2294e6', 'Chaises et assises':'photo-1737131148863-30bdc1f0af49', 'Mange-debout et tables hautes':'photo-1784385694045-efd1352cebfd',
+  'Nappes et housses':'photo-1767961054378-4092dbeb7c3b', 'Bars et comptoirs':'photo-1566417713940-fe7c737a9ef2', 'Lounge et canapés':'photo-1769812343786-c8cdbd73f3cd',
+  'Mobilier lumineux':'photo-1575143379531-fb00883c87be', 'Pupitres et accueil':'photo-1764874299006-bf4266427ec9', 'Paravents et cloisons':'photo-1787059114249-2531a943a663',
+  'Mobilier extérieur':'photo-1719324923613-ff0884b031ed', 'Décors et façades':'photo-1779643302079-2bca80b0b3c9', 'Statues et personnages':'photo-1605012833863-e5771ccabae1',
+  'Plantes et végétaux':'photo-1506634064465-7dab4de896ed', 'Luminaires et lanternes':'photo-1589830468294-765e8aba10a9', 'Tapis et textiles':'photo-1767159601823-96d0295344ce',
+  'Accessoires et petits objets':'photo-1516617508224-b2e61728d328'
+};
+const PHOTOS = '__PHOTOS__'.split(',');
+PRODUITS.forEach(p => { IMG['p' + p.id] = PHOTOS[p.id] && PHOTOS[p.id] !== '-' ? 'photo-' + PHOTOS[p.id] : IMG[p.cat]; });
+const imgUrl = (k, w = 900) => IMG[k] ? `url("https://images.unsplash.com/${IMG[k]}?auto=format&fit=crop&w=${w}&q=70")` : 'none';
+function appliquerPhotos(racine = document) {
+  racine.querySelectorAll('[data-img]').forEach(el => {
+    const big = el.classList.contains('hero') || el.classList.contains('page-hero') || el.dataset.brut;
+    el.style.setProperty('--img', imgUrl(el.dataset.img, big ? 1800 : 700));
+  });
+}
+// Si les photos se chargent (site en ligne), on masque les icônes de remplacement
+(function () { const t = new Image(); t.onload = () => document.body.classList.add('photos'); t.src = 'https://images.unsplash.com/' + IMG.hero + '?w=20&q=10'; })();
+
+/* ============ VIDÉO DE FOND (Pexels, licence libre) ============ */
+(function () {
+  const v = document.getElementById('heroVideo');
+  if (!v || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  v.src = innerWidth < 800
+    ? 'https://videos.pexels.com/video-files/29420612/12668689_960_540_50fps.mp4'
+    : 'https://videos.pexels.com/video-files/29420612/12668692_1280_720_50fps.mp4';
+  v.addEventListener('loadeddata', () => { v.classList.add('prete'); v.play().catch(() => {}); });
+})();
+
+/* ============ ÉTAT ============ */
+let taxe = 'ht', filtreR = '', filtreC = '', texte = '';
+const panier = new Map();          // id -> quantité
+const presta = new Set();          // prestations/ambiances demandées
+const qteTemp = {};
+
+const eur = n => n.toLocaleString('fr-FR', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
+const prixAff = p => p.prix == null ? null : (taxe === 'ht' ? p.prix : p.prix * 1.2);
+const esc = s => s.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+
+/* ============ ROUTAGE ============ */
+const VUES = ['accueil','location','prestations','casino','evenements','agence','devis','mentions'];
+let vueCourante = '';
+function router(forcee) {
+  let v = forcee || (location.hash || '#accueil').slice(1);
+  if (!VUES.includes(v)) v = 'accueil';
+  if (!forcee && v === vueCourante) return;
+  vueCourante = v;
+  document.querySelectorAll('.vue').forEach(el => el.classList.toggle('active', el.id === 'v-' + v));
+  document.querySelectorAll('.menu a[data-v]').forEach(a => a.classList.toggle('courant', a.dataset.v === v));
+  window.scrollTo(0, 0);
+  if (v === 'location') rendreCatalogue();
+  if (v === 'devis') rendreSelection();
+  observer();
+}
+window.addEventListener('hashchange', () => router());
+// Navigation fiable : on change de page nous-mêmes au clic (marche aussi dans un aperçu en iframe)
+function aller(v) {
+  router(v);
+  try { if (location.hash !== '#' + v) history.pushState(null, '', '#' + v); } catch (e) {}
+  menu.classList.remove('ouvert');
+}
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  const v = a.getAttribute('href').slice(1);
+  if (!VUES.includes(v)) return;
+  e.preventDefault();
+  aller(v);
+}, true);
+
+/* ============ ACCUEIL : rayons + FAQ ============ */
+function rendreRayons() {
+  document.getElementById('totalProduits').textContent = PRODUITS.length;
+  document.getElementById('rayonsAccueil').innerHTML = Object.entries(RAYONS).map(([k, r]) => `
+    <div class="rayon r-${k} reveal" data-r="${k}" data-img="${k}">
+      <svg class="gros-ico" viewBox="0 0 24 24">${ICONES[k]}</svg>
+      <span class="nb">${PRODUITS.filter(p => p.r === k).length} articles</span>
+      <h3>${r.nom}</h3><p>${r.txt}</p>
+      <div class="sous">${Object.keys(CATS[k]).slice(0, 5).map(c => `<span>${c}</span>`).join('')}</div>
+    </div>`).join('');
+  appliquerPhotos(document.getElementById('rayonsAccueil'));
+}
+function rendreFaq(id, liste) {
+  document.getElementById(id).innerHTML = liste.map(([q, r]) => `<details><summary>${q}</summary><p>${r}</p></details>`).join('');
+}
+
+/* ============ CATALOGUE ============ */
+function rendreFiltres() {
+  let h = `<h4>Rayons</h4><button class="f-btn rayon-btn ${!filtreR ? 'on' : ''}" data-r="" data-c="">Tout le catalogue <small>${PRODUITS.length}</small></button>`;
+  for (const [k, r] of Object.entries(RAYONS)) {
+    const n = PRODUITS.filter(p => p.r === k).length;
+    h += `<button class="f-btn rayon-btn ${filtreR === k && !filtreC ? 'on' : ''}" data-r="${k}" data-c="">${r.court} <small>${n}</small></button>`;
+    if (filtreR === k) {
+      h += '<div class="f-sous">' + Object.entries(CATS[k]).map(([c, n]) =>
+        `<button class="f-btn ${filtreC === c ? 'on' : ''}" data-r="${k}" data-c="${c}">${c} <small>${n}</small></button>`).join('') + '</div>';
+    }
+  }
+  h += `<h4>Prix</h4><p style="font-size:.8rem;color:var(--gris)">Prix par jour de location, hors livraison et installation.</p>`;
+  document.getElementById('filtres').innerHTML = h;
+}
+function rendreCatalogue() {
+  rendreFiltres();
+  const t = texte.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+  const liste = PRODUITS.filter(p =>
+    (!filtreR || p.r === filtreR) && (!filtreC || p.cat === filtreC) &&
+    (!t || (p.nom + ' ' + p.cat).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').includes(t)));
+  const titre = filtreC || (filtreR ? RAYONS[filtreR].nom : 'Tout le catalogue');
+  document.getElementById('compte').innerHTML = `<strong>${liste.length}</strong> article${liste.length > 1 ? 's' : ''} — ${titre}`;
+  document.getElementById('produits').innerHTML = liste.length ? liste.map(p => {
+    const px = prixAff(p), q = qteTemp[p.id] || 1, dans = panier.has(p.id);
+    return `<div class="produit">
+      <div class="vis v-${p.r}" data-img="p${p.id}"><span class="tag">${p.cat}</span>${ico(p)}</div>
+      <div class="corps">
+        <h5>${esc(p.nom)}</h5>
+        ${px == null ? '<div class="prix devis">Sur devis</div>' : `<div class="prix">${eur(px)} <small>${taxe.toUpperCase()} / jour</small></div>`}
+        <div class="ajout">
+          <div class="qte"><button data-moins="${p.id}">−</button><span>${q}</span><button data-plus="${p.id}">+</button></div>
+          <button class="btn btn-or ${dans ? 'ok' : ''}" data-ajout="${p.id}">${dans ? '✓ Ajouté' : 'Ajouter'}</button>
+        </div>
+      </div></div>`;
+  }).join('') : '<p class="vide">Aucun article ne correspond à votre recherche.</p>';
+  appliquerPhotos(document.getElementById('produits'));
+}
+
+/* ============ PANIER / DEVIS ============ */
+function majBadge() {
+  const n = [...panier.values()].reduce((a, b) => a + b, 0) + presta.size;
+  const b = document.getElementById('badge');
+  b.textContent = n; b.classList.toggle('on', n > 0);
+}
+function toast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('on');
+  clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('on'), 2200);
+}
+function totaux() {
+  const jours = Math.max(1, Number(document.getElementById('jours')?.value) || 1);
+  let ht = 0, devis = 0;
+  panier.forEach((q, id) => { const p = PRODUITS[id]; if (p.prix == null) devis++; else ht += p.prix * q; });
+  return {jours, ht: ht * jours, devis};
+}
+function rendreSelection() {
+  const el = document.getElementById('selection');
+  if (!panier.size && !presta.size) {
+    el.innerHTML = `<h4>Votre sélection</h4><p class="sel-vide">Aucun article pour l'instant. <a href="#location" class="or">Parcourir le catalogue →</a></p>`;
+    return;
+  }
+  let h = `<h4>Votre sélection <a href="#location">+ Ajouter</a></h4>`;
+  panier.forEach((q, id) => {
+    const p = PRODUITS[id];
+    h += `<div class="ligne-sel"><span>${esc(p.nom)}</span>
+      <div class="qte"><button data-smoins="${id}">−</button><span>${q}</span><button data-splus="${id}">+</button></div>
+      <span class="px">${p.prix == null ? 'Sur devis' : eur(p.prix * q) + ' HT'}</span>
+      <button class="suppr" data-suppr="${id}" title="Retirer">×</button></div>`;
+  });
+  presta.forEach(x => {
+    h += `<div class="ligne-sel"><span>${esc(x)}</span><span></span><span class="px">Sur devis</span><button class="suppr" data-spresta="${esc(x)}" title="Retirer">×</button></div>`;
+  });
+  const t = totaux();
+  if (panier.size) h += `<div class="totaux">
+      <div><span>Location (${t.jours} jour${t.jours > 1 ? 's' : ''}) HT</span><span>${eur(t.ht)}</span></div>
+      <div><span>TVA 20 %</span><span>${eur(t.ht * .2)}</span></div>
+      <div class="grand"><span>Total TTC estimé</span><span>${eur(t.ht * 1.2)}</span></div>
+      <small>Estimation hors livraison, installation et caution${t.devis ? ` ; ${t.devis} article${t.devis > 1 ? 's' : ''} sur devis non inclus` : ''}. Le devis final vous sera envoyé par All In Évent.</small>
+    </div>`;
+  el.innerHTML = h;
+}
+
+/* ============ ÉVÉNEMENTS (clics) ============ */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, a, .rayon, .ambiance');
+  if (!t) return;
+  const d = t.dataset;
+
+  if (d.r !== undefined && (t.classList.contains('f-btn') || t.classList.contains('rayon') || t.closest('.foot-grid'))) {
+    filtreR = d.r; filtreC = d.c || ''; texte = ''; document.getElementById('recherche').value = '';
+    if (vueCourante !== 'location') aller('location');
+    rendreCatalogue(); window.scrollTo({top: 0, behavior: 'smooth'});
+    return;
+  }
+  if (d.plus) { qteTemp[d.plus] = (qteTemp[d.plus] || 1) + 1; rendreCatalogue(); return; }
+  if (d.moins) { qteTemp[d.moins] = Math.max(1, (qteTemp[d.moins] || 1) - 1); rendreCatalogue(); return; }
+  if (d.ajout) {
+    const id = Number(d.ajout), q = qteTemp[id] || 1;
+    panier.set(id, q); majBadge(); rendreCatalogue();
+    toast(`${PRODUITS[id].nom} ×${q} ajouté au devis`); return;
+  }
+  if (d.splus) { panier.set(+d.splus, panier.get(+d.splus) + 1); rendreSelection(); majBadge(); return; }
+  if (d.smoins) { const id = +d.smoins, q = panier.get(id) - 1; q > 0 ? panier.set(id, q) : panier.delete(id); rendreSelection(); majBadge(); return; }
+  if (d.suppr) { panier.delete(+d.suppr); rendreSelection(); majBadge(); return; }
+  if (d.spresta) { presta.delete(d.spresta); rendreSelection(); majBadge(); return; }
+  if (t.classList.contains('ambiance')) { presta.add('Décor à thème : ' + d.nom); majBadge(); toast(`Thème « ${d.nom} » ajouté au devis`); return; }
+  if (d.msg) { presta.add(d.msg); majBadge(); }
+});
+document.getElementById('recherche').addEventListener('input', e => { texte = e.target.value; rendreCatalogue(); });
+document.getElementById('toggleTaxe').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  taxe = b.dataset.t; document.querySelectorAll('#toggleTaxe button').forEach(x => x.classList.toggle('on', x === b)); rendreCatalogue();
+});
+document.getElementById('jours').addEventListener('input', rendreSelection);
+
+/* ============ HEADER / MENU / ANIMATIONS ============ */
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+const menu = document.getElementById('menu');
+document.getElementById('burger').addEventListener('click', () => menu.classList.toggle('ouvert'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('ouvert')));
+let io;
+function observer() {
+  io && io.disconnect();
+  io = new IntersectionObserver(en => en.forEach(x => { if (x.isIntersecting) { x.target.classList.add('vu'); io.unobserve(x.target); } }), {threshold: .12});
+  document.querySelectorAll('.vue.active .reveal:not(.vu)').forEach(el => io.observe(el));
+}
+
+/* ============ ROULETTE ============ */
+(function () {
+  const svg = document.getElementById('roulette'), n = 37, cx = 100, cy = 100, R = 92, r = 60;
+  const ordre = [0,32,15,19,4,21,2,25,17,34,6,27,13,36,11,30,8,23,10,5,24,16,33,1,20,14,31,9,22,18,29,7,28,12,35,3,26];
+  const rouges = [1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36];
+  let h = `<circle cx="100" cy="100" r="99" fill="#3a2410" stroke="#d4a64a" stroke-width="2"/>`;
+  for (let i = 0; i < n; i++) {
+    const a1 = i / n * 2 * Math.PI - Math.PI / 2, a2 = (i + 1) / n * 2 * Math.PI - Math.PI / 2;
+    const p = (rad, a) => `${cx + rad * Math.cos(a)},${cy + rad * Math.sin(a)}`, num = ordre[i];
+    const col = num === 0 ? '#0f7a3a' : rouges.includes(num) ? '#b3121d' : '#111';
+    h += `<path d="M${p(r,a1)} L${p(R,a1)} A${R},${R} 0 0 1 ${p(R,a2)} L${p(r,a2)} A${r},${r} 0 0 0 ${p(r,a1)} Z" fill="${col}" stroke="#d4a64a" stroke-width=".4"/>`;
+    const am = (a1 + a2) / 2, tx = cx + 82 * Math.cos(am), ty = cy + 82 * Math.sin(am);
+    h += `<text x="${tx}" y="${ty}" fill="#fff" font-size="6" font-weight="700" text-anchor="middle" dominant-baseline="middle" transform="rotate(${am*180/Math.PI+90} ${tx} ${ty})">${num}</text>`;
+  }
+  h += `<defs><radialGradient id="g"><stop offset="0" stop-color="#f3d58a"/><stop offset="1" stop-color="#a87a26"/></radialGradient></defs>
+    <circle cx="100" cy="100" r="60" fill="#2a1a0b" stroke="#d4a64a" stroke-width="1.5"/><circle cx="100" cy="100" r="40" fill="url(#g)"/>
+    <path d="M100 66 L106 94 L134 100 L106 106 L100 134 L94 106 L66 100 L94 94 Z" fill="#3a2410" opacity=".6"/><circle cx="100" cy="100" r="8" fill="#f6e0a0" stroke="#7a5518"/>`;
+  svg.innerHTML = h;
+})();
+
+/* ============ FORMULAIRE DEVIS ============ */
+const form = document.getElementById('formDevis'), etapes = form.querySelectorAll('.etape-form'),
+      barres = form.querySelectorAll('.progression div'), prec = document.getElementById('prec'),
+      suiv = document.getElementById('suiv'), erreur = document.getElementById('erreur');
+let courant = 0;
+function afficher(i) {
+  etapes.forEach((e, k) => e.classList.toggle('visible', k === i));
+  barres.forEach((b, k) => b.classList.toggle('actif', k <= i));
+  prec.style.visibility = i ? 'visible' : 'hidden';
+  suiv.textContent = i === etapes.length - 1 ? 'Envoyer la demande' : 'Suivant →';
+  erreur.textContent = '';
+}
+function valide(i) {
+  for (const c of etapes[i].querySelectorAll('[required]')) {
+    if (!c.value.trim()) { c.focus(); erreur.textContent = 'Merci de remplir les champs obligatoires (*).'; return false; }
+    if (c.type === 'email' && !/^\S+@\S+\.\S+$/.test(c.value)) { c.focus(); erreur.textContent = 'Adresse email invalide.'; return false; }
+  }
+  return true;
+}
+prec.addEventListener('click', () => courant && afficher(--courant));
+suiv.addEventListener('click', () => {
+  if (!valide(courant)) return;
+  if (courant < etapes.length - 1) return afficher(++courant);
+  const d = new FormData(form), t = totaux();
+  let sel = '';
+  panier.forEach((q, id) => { const p = PRODUITS[id]; sel += `- ${p.nom} x${q} : ${p.prix == null ? 'sur devis' : eur(p.prix * q) + ' HT/jour'}\n`; });
+  presta.forEach(x => sel += `- ${x}\n`);
+  const numero = 'AIE-' + new Date().toISOString().slice(2, 10).replace(/-/g, '') + '-' + String(Math.floor(Math.random() * 9000) + 1000);
+  document.getElementById('champNumero').value = numero;
+  document.getElementById('champSelection').value = sel || 'Aucun article sélectionné';
+  document.getElementById('champEstimation').value = panier.size ? `${eur(t.ht)} HT (${eur(t.ht * 1.2)} TTC) pour ${t.jours} jour(s), hors livraison` : '-';
+
+  // Génère le PDF (avant de vider le panier)
+  let doc = null;
+  try { doc = genererPDF(d, t, numero); } catch (e) { console.error('PDF', e); }
+  const nomFichier = 'Devis-AllInEvent-' + numero + '.pdf';
+
+  etapes.forEach(e => e.classList.remove('visible'));
+  form.querySelector('.progression').style.display = form.querySelector('.nav-form').style.display = 'none';
+  document.getElementById('merci').classList.add('visible');
+  const titre = document.getElementById('merciTitre'), texte = document.getElementById('merciTexte');
+
+  const envoi = new FormData(form);
+  envoi.delete('devis_pdf');
+  if (doc) envoi.append('devis_pdf', new File([doc.output('blob')], nomFichier, {type: 'application/pdf'}));
+  fetch('/', {method: 'POST', body: envoi})
+    .then(r => { if (!r.ok) throw new Error(r.status);
+      titre.innerHTML = 'Demande <span class="or">envoyée !</span>';
+      texte.innerHTML = 'Merci ' + esc(d.get('nom')) + ', nous avons bien reçu votre demande de devis <strong class="or">n° ' + numero + '</strong>. Nous revenons vers vous très rapidement.';
+      if (doc) {
+        const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-or'; b.style.marginTop = '20px';
+        b.textContent = '⬇ Télécharger mon devis (PDF)';
+        b.onclick = () => { try { doc.save(nomFichier); } catch (e) {} };
+        texte.after(b);
+        try { doc.save(nomFichier); } catch (e) {}
+      }
+      panier.clear(); presta.clear(); majBadge(); rendreSelection(); })
+    .catch(() => {
+      titre.innerHTML = 'Envoi <span class="or">impossible</span>';
+      texte.innerHTML = 'Votre demande n\'a pas pu être envoyée. Appelez-nous au <strong class="or">06 12 26 20 54</strong>, écrivez-nous à <strong class="or">quentinlo@icloud.com</strong>, ou réessayez dans un instant.';
+      const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-or'; b.style.marginTop = '18px'; b.textContent = 'Réessayer';
+      b.onclick = () => { b.remove(); document.getElementById('merci').classList.remove('visible'); form.querySelector('.progression').style.display = ''; form.querySelector('.nav-form').style.display = ''; afficher(courant); };
+      texte.after(b);
+    });
+});
+
+/* ============ PDF DU DEVIS ============ */
+const LOGO_PDF = '__LOGO__';
+function genererPDF(d, t, numero) {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF({unit: 'mm', format: 'a4'});
+  const W = 210, M = 14, OR = [196, 150, 60], NOIR = [12, 12, 16], GRIS = [110, 110, 120];
+  const txt = v => (v == null || v === '' ? '-' : String(v));
+  const fr = n => n.toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2}).replace(/ | /g, ' ') + ' €';
+  const dateFR = s => { if (!s) return 'Non précisée'; const [y, m, j] = s.split('-'); return `${j}/${m}/${y}`; };
+  const auj = new Date().toLocaleDateString('fr-FR');
+
+  // Bandeau noir + logo
+  doc.setFillColor(...NOIR); doc.rect(0, 0, W, 44, 'F');
+  doc.setFillColor(...OR); doc.rect(0, 44, W, 1.2, 'F');
+  try { doc.addImage(LOGO_PDF, 'JPEG', M - 2, 5, 64, 34); } catch (e) {}
+  doc.setTextColor(255, 255, 255); doc.setFont('helvetica', 'bold'); doc.setFontSize(20);
+  doc.text('DEMANDE DE DEVIS', W - M, 18, {align: 'right'});
+  doc.setFont('helvetica', 'normal'); doc.setFontSize(10); doc.setTextColor(...OR);
+  doc.text('N° ' + numero, W - M, 26, {align: 'right'});
+  doc.setTextColor(200, 200, 205);
+  doc.text('Date : ' + auj, W - M, 32, {align: 'right'});
+  doc.text('Estimation valable 30 jours', W - M, 38, {align: 'right'});
+
+  // Blocs Client / Événement
+  let y = 55;
+  const bloc = (x, titre, lignes) => {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(...OR);
+    doc.text(titre.toUpperCase(), x, y);
+    doc.setDrawColor(...OR); doc.setLineWidth(0.4); doc.line(x, y + 1.8, x + 86, y + 1.8);
+    let yy = y + 8;
+    lignes.forEach(([k, v]) => {
+      doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...NOIR); doc.text(k, x, yy);
+      doc.setFont('helvetica', 'normal'); doc.setTextColor(60, 60, 66);
+      const l = doc.splitTextToSize(txt(v), 58); doc.text(l, x + 28, yy); yy += 5.2 * l.length;
+    });
+    return yy;
+  };
+  const y1 = bloc(M, 'Client', [['Nom', d.get('nom')], ['Société', d.get('societe')], ['Profil', d.get('profil')], ['Téléphone', d.get('tel')], ['Email', d.get('email')]]);
+  const y2 = bloc(W / 2 + 4, 'Événement', [['Type', d.get('type')], ['Date', dateFR(d.get('date'))], ['Durée', t.jours + ' jour(s)'], ['Lieu', d.get('lieu')], ['Invités', d.get('invites') || 'Non précisé']]);
+  y = Math.max(y1, y2) + 4;
+
+  // Prestations
+  const prestas = d.getAll('presta');
+  if (prestas.length) {
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...NOIR); doc.text('Prestations souhaitées :', M, y);
+    doc.setFont('helvetica', 'normal'); doc.setTextColor(60, 60, 66);
+    const l = doc.splitTextToSize(prestas.join(' • '), W - 2 * M - 42); doc.text(l, M + 42, y); y += 5 * l.length + 3;
+  }
+
+  // Tableau des articles
+  const corpsTab = [];
+  panier.forEach((q, id) => {
+    const p = PRODUITS[id];
+    corpsTab.push([p.nom + '\n' + p.cat, String(q), p.prix == null ? 'Sur devis' : fr(p.prix), String(t.jours), p.prix == null ? 'Sur devis' : fr(p.prix * q * t.jours)]);
+  });
+  presta.forEach(x => corpsTab.push([x, '1', 'Sur devis', '-', 'Sur devis']));
+  if (!corpsTab.length) corpsTab.push(['Aucun article sélectionné — projet décrit dans le message', '-', '-', '-', '-']);
+  doc.autoTable({
+    startY: y, margin: {left: M, right: M},
+    head: [['Désignation', 'Qté', 'P.U. HT / jour', 'Jours', 'Total HT']],
+    body: corpsTab,
+    styles: {font: 'helvetica', fontSize: 9, cellPadding: 2.6, textColor: [40, 40, 46], lineColor: [225, 222, 215], lineWidth: 0.2},
+    headStyles: {fillColor: NOIR, textColor: OR, fontStyle: 'bold'},
+    alternateRowStyles: {fillColor: [248, 246, 241]},
+    columnStyles: {0: {cellWidth: 82}, 1: {halign: 'center', cellWidth: 14}, 2: {halign: 'right'}, 3: {halign: 'center', cellWidth: 16}, 4: {halign: 'right', fontStyle: 'bold'}}
+  });
+  y = doc.lastAutoTable.finalY + 6;
+
+  // Totaux
+  if (y > 240) { doc.addPage(); y = 20; }
+  const xT = W - M - 78;
+  const ligneTot = (k, v, fort) => {
+    doc.setFont('helvetica', fort ? 'bold' : 'normal'); doc.setFontSize(fort ? 11 : 10);
+    doc.setTextColor(...(fort ? NOIR : [70, 70, 76])); doc.text(k, xT + 4, y); doc.text(v, W - M - 4, y, {align: 'right'}); y += 7;
+  };
+  doc.setFillColor(248, 246, 241); doc.setDrawColor(...OR); doc.setLineWidth(0.5);
+  doc.roundedRect(xT, y - 6, 78, 28, 2, 2, 'FD');
+  ligneTot('Total HT estimé', fr(t.ht));
+  ligneTot('TVA 20 %', fr(t.ht * 0.2));
+  ligneTot('Total TTC estimé', fr(t.ht * 1.2), true);
+  y += 4;
+  if (t.devis || presta.size) {
+    doc.setFont('helvetica', 'italic'); doc.setFontSize(8); doc.setTextColor(...GRIS);
+    doc.text('Les éléments « Sur devis » ne sont pas inclus dans ce total.', W - M, y, {align: 'right'}); y += 6;
+  }
+
+  // Message
+  const msg = d.get('message');
+  if (msg && msg.trim()) {
+    if (y > 250) { doc.addPage(); y = 20; }
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(10); doc.setTextColor(...OR); doc.text('VOTRE MESSAGE', M, y); y += 6;
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(9); doc.setTextColor(60, 60, 66);
+    const l = doc.splitTextToSize(msg.trim(), W - 2 * M); doc.text(l, M, y); y += 4.6 * l.length + 4;
+  }
+
+  // Pied de page sur chaque page
+  const n = doc.getNumberOfPages();
+  for (let i = 1; i <= n; i++) {
+    doc.setPage(i);
+    doc.setFillColor(...NOIR); doc.rect(0, 272, W, 25, 'F');
+    doc.setFillColor(...OR); doc.rect(0, 272, W, 0.8, 'F');
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(185, 185, 192);
+    doc.text(doc.splitTextToSize('Document récapitulatif de votre demande : estimation indicative, hors livraison, installation et caution. Seul le devis définitif envoyé et signé par All In Évent fait foi.', W - 2 * M), W / 2, 278, {align: 'center'});
+    doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...OR);
+    doc.text('ALL IN ÉVENT  •  quentinlo@icloud.com  •  06 12 26 20 54  •  allinevent.netlify.app', W / 2, 289, {align: 'center'});
+    doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(140, 140, 148);
+    doc.text(i + ' / ' + n, W - M, 293, {align: 'right'});
+  }
+  return doc;
+}
+
+/* ============ INIT ============ */
+document.getElementById('ambiances').innerHTML = AMBIANCES.map(([em, n, s]) =>
+  `<div class="ambiance" data-nom="${n}"><span class="em">${em}</span><strong>${n}</strong><small>${s}</small></div>`).join('');
+appliquerPhotos(); rendreRayons(); rendreFaq('faqAccueil', FAQ_ACCUEIL); rendreFaq('faqAgence', FAQ_AGENCE);
+document.getElementById('annee').textContent = new Date().getFullYear();
+majBadge(); router();
+</script>
+</body>
+</html>
