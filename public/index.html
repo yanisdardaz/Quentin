@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>All In Évent – Créons ensemble des événements inoubliables</title>
 <meta name="description" content="All In Évent : location de matériel événementiel (son, lumière, vidéo, mobilier, décoration), prestations clé en main, animation casino, structures gonflables et team building.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800;1,900&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 30 22%22%3E%3Cpath d=%22M2 20 L4 6 L10 12 L15 2 L20 12 L26 6 L28 20 Z%22 fill=%22%23d4a64a%22/%3E%3C/svg%3E">
 <style>
 
 :root{
@@ -237,6 +237,8 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
 @keyframes logoFlotte{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 @media (prefers-reduced-motion:reduce){.hero-logo{animation:none}}
 .logo-txt{white-space:nowrap;flex-shrink:0}
+.consentement label{text-transform:none;letter-spacing:0;font-size:.85rem;color:var(--texte);display:flex;gap:10px;align-items:flex-start;line-height:1.5;cursor:pointer}
+.consentement input{width:18px;height:18px;margin-top:2px;flex:none;accent-color:#d4a64a}
 .credit{font-size:.7rem;color:#5e5c66;text-align:center;margin-top:8px}
 .credit a{color:#7d7a86}
 /* ====== Ajouts site complet ====== */
@@ -742,7 +744,7 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
         <div class="selection" id="selection"></div>
         <div class="contact-box">
           <h3>All In <span class="or">Évent</span></h3>
-                    <div class="contact-ligne"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a href="mailto:quentinlo@icloud.com">quentinlo@icloud.com</a></div>
+                    <div class="contact-ligne"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><a data-mail-lien href="#devis">Afficher l'email</a></div>
           <div class="contact-ligne"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg><a href="tel:0612262054">06 12 26 20 54</a></div>
           <p class="petit">Particuliers • Entreprises • Collectivités</p>
         </div>
@@ -759,10 +761,10 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
         <div class="etape-form visible">
           <h4><span>01</span>Vos coordonnées</h4>
           <div class="champs">
-            <div class="champ"><label for="nom">Nom et prénom *</label><input id="nom" name="nom" required></div>
-            <div class="champ"><label for="tel">Téléphone *</label><input id="tel" name="tel" type="tel" required></div>
-            <div class="champ full"><label for="email">Email *</label><input id="email" name="email" type="email" required></div>
-            <div class="champ full"><label for="societe">Société / organisme (facultatif)</label><input id="societe" name="societe"></div>
+            <div class="champ"><label for="nom">Nom et prénom *</label><input id="nom" name="nom" required maxlength="80" autocomplete="name"></div>
+            <div class="champ"><label for="tel">Téléphone *</label><input id="tel" name="tel" type="tel" required maxlength="20" pattern="[0-9 +\(\)\.\-]{6,20}" autocomplete="tel" title="Numéro de téléphone (chiffres, espaces, +)"></div>
+            <div class="champ full"><label for="email">Email *</label><input id="email" name="email" type="email" required maxlength="120" autocomplete="email"></div>
+            <div class="champ full"><label for="societe">Société / organisme (facultatif)</label><input id="societe" name="societe" maxlength="100" autocomplete="organization"></div>
             <div class="champ full"><label>Vous êtes</label>
               <div class="choix">
                 <label><input type="radio" name="profil" value="Particulier" checked>Particulier</label>
@@ -779,9 +781,9 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
               <select id="type" name="type"><option>Anniversaire</option><option>Mariage</option><option>Soirée d'entreprise</option><option>Séminaire</option><option>Team building</option><option>Noël / fin d'année</option><option>Fête de quartier / commune</option><option>Autre</option></select>
             </div>
             <div class="champ"><label for="date">Date</label><input id="date" name="date" type="date"></div>
-            <div class="champ"><label for="jours">Durée de location (jours)</label><input id="jours" name="jours" type="number" min="1" value="1"></div>
-            <div class="champ"><label for="invites">Nombre d'invités</label><input id="invites" name="invites" type="number" min="1" placeholder="ex : 80"></div>
-            <div class="champ full"><label for="lieu">Ville / lieu *</label><input id="lieu" name="lieu" required></div>
+            <div class="champ"><label for="jours">Durée de location (jours)</label><input id="jours" name="jours" type="number" min="1" max="60" value="1"></div>
+            <div class="champ"><label for="invites">Nombre d'invités</label><input id="invites" name="invites" type="number" min="1" max="10000" placeholder="ex : 80"></div>
+            <div class="champ full"><label for="lieu">Ville / lieu *</label><input id="lieu" name="lieu" required maxlength="120"></div>
           </div>
         </div>
         <div class="etape-form">
@@ -798,7 +800,8 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
                 <label><input type="checkbox" name="presta" value="Décoration sur mesure">Sur mesure</label>
               </div>
             </div>
-            <div class="champ full"><label for="message">Décrivez votre projet</label><textarea id="message" name="message" placeholder="Vos envies, votre budget, vos questions…"></textarea></div>
+            <div class="champ full consentement"><label><input type="checkbox" name="consentement" value="Oui" required> J'accepte que mes données soient utilisées par All In Évent pour traiter ma demande de devis, conformément à la <a href="#mentions" class="or">politique de confidentialité</a>. *</label></div>
+            <div class="champ full"><label for="message">Décrivez votre projet</label><textarea id="message" name="message" maxlength="2000" placeholder="Vos envies, votre budget, vos questions…"></textarea></div>
           </div>
         </div>
         <p class="erreur" id="erreur"></p>
@@ -822,13 +825,21 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
   <section style="padding-top:20px">
     <div class="mentions wrap">
       <h3>Éditeur du site</h3>
-      <p>All In Évent — <span class="a-remplir">forme juridique</span> — SIRET <span class="a-remplir">à compléter</span><br>Adresse : <span class="a-remplir">à compléter</span><br>Email : quentinlo@icloud.com — Téléphone : 06 12 26 20 54<br>Directeur de la publication : <span class="a-remplir">à compléter</span></p>
+      <p>All In Évent — <span class="a-remplir">forme juridique</span> — SIRET <span class="a-remplir">à compléter</span><br>Adresse : <span class="a-remplir">à compléter</span><br>Email : <span data-mail>(activez JavaScript)</span> — Téléphone : 06 12 26 20 54<br>Directeur de la publication : <span class="a-remplir">à compléter</span></p>
       <h3>Hébergement</h3>
       <p><span class="a-remplir">Nom, adresse et téléphone de l'hébergeur</span></p>
       <h3>Prix</h3>
       <p>Les prix affichés sont indiqués en euros, hors taxes (HT) et toutes taxes comprises (TTC, TVA 20 %), pour une journée de location. Ils n'incluent pas la livraison, l'installation ni la caution, précisées sur le devis. Seul le devis signé fait foi.</p>
-      <h3>Données personnelles</h3>
-      <p>Les informations transmises via le formulaire de devis servent uniquement à répondre à votre demande. Elles ne sont ni vendues ni cédées. Vous pouvez demander leur consultation, rectification ou suppression en écrivant à quentinlo@icloud.com.</p>
+      <h3>Politique de confidentialité</h3>
+      <p><strong>Responsable du traitement :</strong> All In Évent (coordonnées ci-dessus).</p>
+      <p><strong>Données collectées :</strong> uniquement celles que vous saisissez dans le formulaire de devis (nom, téléphone, email, société, informations sur l'événement, articles sélectionnés et message).</p>
+      <p><strong>Finalité et base légale :</strong> répondre à votre demande et établir un devis (mesures précontractuelles prises à votre demande), avec votre consentement exprimé dans le formulaire.</p>
+      <p><strong>Destinataires :</strong> uniquement All In Évent. Les demandes transitent par notre hébergeur Netlify, Inc. (États-Unis), qui traite les données pour notre compte. Vos données ne sont ni vendues ni cédées à des tiers.</p>
+      <p><strong>Durée de conservation :</strong> 3 ans à compter de notre dernier échange si aucun contrat n'est conclu ; en cas de commande, pendant la durée légale de conservation des documents commerciaux.</p>
+      <p><strong>Vos droits :</strong> accès, rectification, effacement, limitation, opposition et portabilité de vos données. Pour les exercer, écrivez à <span data-mail></span>. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).</p>
+      <p><strong>Cookies :</strong> ce site n'utilise aucun cookie ni outil de mesure d'audience. Les polices sont hébergées sur le site ; seules les photos (Unsplash) et la vidéo d'accueil (Pexels) sont chargées depuis leurs serveurs.</p>
+      <h3>Sécurité</h3>
+      <p>Le site est servi exclusivement en HTTPS et protégé par des en-têtes de sécurité (politique de sécurité du contenu, HSTS, protection contre l'affichage dans un cadre). Pour signaler une vulnérabilité, consultez notre fichier <a class="or" href="/.well-known/security.txt">security.txt</a>.</p>
     </div>
   </section>
 </div>
@@ -840,7 +851,7 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
     <div class="foot-grid">
       <div>
         <a href="#accueil" class="logo-txt"><svg viewBox="0 0 30 22"><path d="M2 20 L4 6 L10 12 L15 2 L20 12 L26 6 L28 20 Z" fill="#d4a64a"/></svg><span>ALL IN<small>ÉVENT</small></span></a>
-        <p>Créons ensemble des événements inoubliables.<br>quentinlo@icloud.com<br>06 12 26 20 54</p>
+        <p>Créons ensemble des événements inoubliables.<br><span data-mail></span><br>06 12 26 20 54</p>
       </div>
       <div><h5>Location</h5><a href="#location" data-r="son">Sono, lumière et vidéo</a><a href="#location" data-r="mob">Mobilier</a><a href="#location" data-r="deco">Décoration</a><a href="#location" data-r="">Tout le catalogue</a></div>
       <div><h5>Prestations</h5><a href="#prestations">Technique</a><a href="#prestations">Scénographie</a><a href="#casino">Animation casino</a><a href="#evenements">Événements</a></div>
@@ -852,8 +863,8 @@ footer{padding:60px 0 30px;border-top:1px solid rgba(212,166,74,.2);background:#
 </footer>
 <div class="toast" id="toast"></div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="vendor/jspdf.umd.min.js"></script>
+<script src="vendor/jspdf.plugin.autotable.min.js"></script>
 <script>
 /* ============ DONNÉES ============ */
 const RAW = `son|Sonorisation|Caisson FBT X-Sub 118SA|96
@@ -1140,6 +1151,11 @@ function appliquerPhotos(racine = document) {
 // Si les photos se chargent (site en ligne), on masque les icônes de remplacement
 (function () { const t = new Image(); t.onload = () => document.body.classList.add('photos'); t.src = 'https://images.unsplash.com/' + IMG.hero + '?w=20&q=10'; })();
 
+/* ============ EMAIL MASQUÉ (anti-robots) ============ */
+const MAIL = ['quentinlo', 'icloud.com'].join(String.fromCharCode(64));
+document.querySelectorAll('[data-mail]').forEach(el => { el.textContent = MAIL; });
+document.querySelectorAll('[data-mail-lien]').forEach(a => { a.textContent = MAIL; a.href = 'mailto:' + MAIL; });
+
 /* ============ VIDÉO DE FOND (Pexels, licence libre) ============ */
 (function () {
   const v = document.getElementById('heroVideo');
@@ -1368,9 +1384,12 @@ function afficher(i) {
   erreur.textContent = '';
 }
 function valide(i) {
-  for (const c of etapes[i].querySelectorAll('[required]')) {
-    if (!c.value.trim()) { c.focus(); erreur.textContent = 'Merci de remplir les champs obligatoires (*).'; return false; }
-    if (c.type === 'email' && !/^\S+@\S+\.\S+$/.test(c.value)) { c.focus(); erreur.textContent = 'Adresse email invalide.'; return false; }
+  for (const c of etapes[i].querySelectorAll('input, select, textarea')) {
+    if (c.type === 'hidden' || c.type === 'file') continue;
+    if (c.type === 'checkbox') { if (c.required && !c.checked) { c.focus(); erreur.textContent = 'Merci d\'accepter le traitement de vos données pour envoyer la demande.'; return false; } continue; }
+    if (c.required && !c.value.trim()) { c.focus(); erreur.textContent = 'Merci de remplir les champs obligatoires (*).'; return false; }
+    if (c.type === 'email' && c.value && !/^[^\s@<>]+@[^\s@<>]+\.[^\s@<>]{2,}$/.test(c.value)) { c.focus(); erreur.textContent = 'Adresse email invalide.'; return false; }
+    if (!c.checkValidity()) { c.focus(); erreur.textContent = (c.labels && c.labels[0] ? c.labels[0].textContent.replace(' *', '') + ' : ' : '') + c.validationMessage; return false; }
   }
   return true;
 }
@@ -1414,7 +1433,7 @@ suiv.addEventListener('click', () => {
       panier.clear(); presta.clear(); majBadge(); rendreSelection(); })
     .catch(() => {
       titre.innerHTML = 'Envoi <span class="or">impossible</span>';
-      texte.innerHTML = 'Votre demande n\'a pas pu être envoyée. Appelez-nous au <strong class="or">06 12 26 20 54</strong>, écrivez-nous à <strong class="or">quentinlo@icloud.com</strong>, ou réessayez dans un instant.';
+      texte.innerHTML = 'Votre demande n\'a pas pu être envoyée. Appelez-nous au <strong class="or">06 12 26 20 54</strong>, écrivez-nous à <strong class="or">' + MAIL + '</strong>, ou réessayez dans un instant.';
       const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn-or'; b.style.marginTop = '18px'; b.textContent = 'Réessayer';
       b.onclick = () => { b.remove(); document.getElementById('merci').classList.remove('visible'); form.querySelector('.progression').style.display = ''; form.querySelector('.nav-form').style.display = ''; afficher(courant); };
       texte.after(b);
@@ -1525,7 +1544,7 @@ function genererPDF(d, t, numero) {
     doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(185, 185, 192);
     doc.text(doc.splitTextToSize('Document récapitulatif de votre demande : estimation indicative, hors livraison, installation et caution. Seul le devis définitif envoyé et signé par All In Évent fait foi.', W - 2 * M), W / 2, 278, {align: 'center'});
     doc.setFont('helvetica', 'bold'); doc.setFontSize(9); doc.setTextColor(...OR);
-    doc.text('ALL IN ÉVENT  •  quentinlo@icloud.com  •  06 12 26 20 54  •  allinevent.netlify.app', W / 2, 289, {align: 'center'});
+    doc.text('ALL IN ÉVENT  •  ' + MAIL + '  •  06 12 26 20 54  •  allinevent.netlify.app', W / 2, 289, {align: 'center'});
     doc.setFont('helvetica', 'normal'); doc.setFontSize(7.5); doc.setTextColor(140, 140, 148);
     doc.text(i + ' / ' + n, W - M, 293, {align: 'right'});
   }

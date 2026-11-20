@@ -94,11 +94,11 @@ sequenceDiagram
 
 ## 🛠 Stack technique
 
-- **HTML5 / CSS3 / JavaScript** (vanilla, sans framework) : tout le site tient dans un seul fichier `index.html`
-- **[jsPDF](https://github.com/parallax/jsPDF)** + **[jsPDF-AutoTable](https://github.com/simonbengtsson/jsPDF-AutoTable)** : génération du PDF côté client (chargés depuis cdnjs)
+- **HTML5 / CSS3 / JavaScript** (vanilla, sans framework) : pages, styles, catalogue et logique réunis dans `index.html`
+- **[jsPDF](https://github.com/parallax/jsPDF)** + **[jsPDF-AutoTable](https://github.com/simonbengtsson/jsPDF-AutoTable)** : génération du PDF côté client (hébergés sur le site, aucun CDN tiers)
 - **[Netlify](https://www.netlify.com)** : hébergement, HTTPS et **Netlify Forms** pour la réception des demandes
 - **Python** : petit script `build.py` qui assemble le site à partir des sources
-- **Google Fonts** : Montserrat et Cinzel
+- **Polices Montserrat et Cinzel** hébergées sur le site (aucun appel à Google Fonts)
 
 ---
 
@@ -106,16 +106,22 @@ sequenceDiagram
 
 ```
 .
-├── index.html          # Site complet, prêt à publier (généré par build.py)
-├── build.py            # Assemble index.html à partir de src/
+├── build.py                    # Construit public/ à partir de src/
+├── public/                     # ⇦ Dossier à publier sur Netlify (généré)
+│   ├── index.html              #   Site complet
+│   ├── _headers                #   En-têtes de sécurité HTTP (CSP, HSTS…)
+│   ├── .well-known/security.txt#   Contact sécurité (RFC 9116)
+│   ├── fonts/                  #   Polices hébergées sur le site
+│   └── vendor/                 #   jsPDF + AutoTable
 ├── src/
-│   ├── site.html       # Structure, textes et JavaScript
-│   ├── base.css        # Styles de base (thème noir et or)
-│   ├── produits.txt    # Catalogue : rayon|catégorie|nom|prix HT/jour
-│   ├── photos.csv      # Photo associée à chaque produit
-│   ├── logo.jpg        # Logo sur fond noir (utilisé dans le PDF)
-│   └── logo.webp       # Logo détouré (utilisé sur le site)
-└── docs/               # Captures d'écran du README
+│   ├── site.html               # Structure, textes et JavaScript
+│   ├── base.css                # Styles de base (thème noir et or)
+│   ├── produits.txt            # Catalogue : rayon|catégorie|nom|prix HT/jour
+│   ├── photos.csv              # Photo associée à chaque produit
+│   ├── logo.jpg / logo.webp    # Logo (fond noir pour le PDF, détouré pour le site)
+│   ├── fonts/                  # Polices Montserrat et Cinzel (licence OFL)
+│   └── vendor/                 # Bibliothèques PDF (licence MIT)
+└── docs/                       # Captures d'écran du README
 ```
 
 ### Format du catalogue (`src/produits.txt`)
@@ -141,16 +147,23 @@ deco|Décors et façades|Télésiège|
 
 ## 🚀 Lancer et modifier le site
 
-**Voir le site en local :** il suffit d'ouvrir `index.html` dans un navigateur. Aucune installation n'est nécessaire.
+**Voir le site en local :**
+
+```bash
+python3 build.py                              # construit public/
+python3 -m http.server 8000 --directory public  # puis ouvrir http://localhost:8000
+```
 
 **Modifier le site :**
 
 ```bash
 # 1. Modifier les fichiers dans src/ (textes, prix, produits…)
-# 2. Régénérer index.html
+# 2. Reconstruire public/ (recalcule aussi l'empreinte CSP du script)
 python3 build.py
-# 3. Vérifier en ouvrant index.html, puis publier (voir ci-dessous)
+# 3. Vérifier en local, puis publier le dossier public/ (voir ci-dessous)
 ```
+
+> ⚠️ Toujours repasser par `build.py` après une modification : la politique de sécurité (CSP) n'autorise que le script dont l'empreinte a été calculée. Un `index.html` modifié à la main serait bloqué par le navigateur.
 
 > Le formulaire de devis ne fonctionne qu'une fois le site **en ligne sur Netlify**. En local, il affiche un message d'erreur, ce qui est normal.
 
@@ -161,7 +174,9 @@ python3 build.py
 Le site est hébergé sur **Netlify** : https://allinevent.netlify.app
 
 **Mise à jour par glisser-déposer :**
-Netlify → projet **allinevent** → **Deploys** → glisser `index.html` (ou un dossier / zip le contenant) dans la zone de dépôt.
+Netlify → projet **allinevent** → **Deploys** → glisser le **dossier `public/`** (ou un zip de ce dossier) dans la zone de dépôt.
+
+> Il faut publier le dossier complet, pas seulement `index.html` : les en-têtes de sécurité (`_headers`), `security.txt`, les polices et les bibliothèques en font partie.
 
 **Prérequis Netlify Forms (déjà configuré) :**
 - *Forms → Form detection* : activé
@@ -171,18 +186,25 @@ Netlify → projet **allinevent** → **Deploys** → glisser `index.html` (ou u
 
 ## 🔒 Sécurité
 
-**Déjà en place :**
-- HTTPS fourni par Netlify
-- Champ **honeypot** anti-robots sur le formulaire
-- Échappement des données saisies avant leur affichage (prévention XSS)
-- Aucune clé d'API ni secret dans le code
+| Mesure | Protection |
+|---|---|
+| **Content-Security-Policy** stricte | Le seul script inline est autorisé par son **empreinte SHA-256** (pas de `'unsafe-inline'` pour les scripts) ; images et vidéo limitées à Unsplash et Pexels ; `object-src 'none'`, `base-uri 'self'`, `form-action 'self'` → limite fortement les injections de scripts (XSS) |
+| **Strict-Transport-Security** | Force le HTTPS pendant 1 an |
+| **X-Frame-Options: DENY** + `frame-ancestors 'none'` | Empêche l'affichage du site dans une iframe (clickjacking) |
+| **X-Content-Type-Options**, **Referrer-Policy**, **Permissions-Policy**, **COOP** | Durcissement du navigateur (pas de détection de type MIME, référent limité, caméra, micro et géolocalisation désactivés…) |
+| **Aucune dépendance tierce exécutée** | jsPDF et les polices sont hébergés sur le site : pas de risque de CDN compromis, pas de fuite d'IP vers Google Fonts |
+| **Formulaire** | Champ **honeypot**, filtrage anti-spam de Netlify, longueurs maximales, format du téléphone et de l'email vérifiés, données échappées avant affichage |
+| **RGPD** | Case de consentement obligatoire, politique de confidentialité, aucun cookie ni traceur |
+| **Email masqué** | L'adresse de contact n'apparaît pas en clair dans le HTML (reconstruite en JavaScript) contre les robots collecteurs |
+| **security.txt** | `/.well-known/security.txt` (RFC 9116) pour signaler une vulnérabilité |
+| **Secrets** | Aucune clé d'API ni mot de passe dans le code |
 
-**Améliorations prévues :**
-- [ ] En-têtes de sécurité HTTP (CSP, HSTS, X-Frame-Options…) via un fichier `_headers`
-- [ ] Subresource Integrity (SRI) sur les scripts chargés depuis le CDN
-- [ ] Limites de longueur sur les champs et CAPTCHA
-- [ ] Consentement RGPD sur le formulaire et politique de confidentialité
-- [ ] Fichier `/.well-known/security.txt` (RFC 9116)
+**Vérifier :** [securityheaders.com](https://securityheaders.com/?q=https%3A%2F%2Fallinevent.netlify.app&followRedirects=on) · [Mozilla Observatory](https://developer.mozilla.org/fr/observatory/analyze?host=allinevent.netlify.app)
+
+**Pistes suivantes :**
+- [ ] Remplacer `'unsafe-inline'` des styles par des empreintes (déplacer les attributs `style=""` dans le CSS)
+- [ ] CAPTCHA si le spam augmente (le reCAPTCHA intégré à Netlify n'est pas compatible avec l'envoi en JavaScript ; il faudrait une clé reCAPTCHA ou hCaptcha dédiée)
+- [ ] Double authentification (2FA) activée sur les comptes Netlify et GitHub
 
 ---
 
@@ -191,6 +213,7 @@ Netlify → projet **allinevent** → **Deploys** → glisser `index.html` (ou u
 - Photos d'illustration : [Unsplash](https://unsplash.com) (licence Unsplash)
 - Vidéo de fond : [Pexels](https://www.pexels.com) (licence Pexels)
 - Génération PDF : [jsPDF](https://github.com/parallax/jsPDF) (MIT) et [jsPDF-AutoTable](https://github.com/simonbengtsson/jsPDF-AutoTable) (MIT)
+- Polices : [Montserrat](https://fonts.google.com/specimen/Montserrat) et [Cinzel](https://fonts.google.com/specimen/Cinzel) (SIL Open Font License), via [Fontsource](https://fontsource.org)
 
 Les photos sont des illustrations non contractuelles du matériel proposé.
 
