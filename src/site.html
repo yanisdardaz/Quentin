@@ -556,7 +556,7 @@ __CSS__
         <div class="etape-form visible">
           <h4><span>01</span>Vos coordonnées</h4>
           <div class="champs">
-            <div class="champ"><label for="nom">Nom et prénom *</label><input id="nom" name="nom" required maxlength="80" autocomplete="name"></div>
+            <div class="champ"><label for="nom">Nom et prénom *</label><input id="nom" name="nom" required maxlength="80" autocomplete="name" pattern="[A-Za-zÀ-ÿ '\-]+" title="Lettres, espaces, tirets et apostrophes uniquement"></div>
             <div class="champ"><label for="tel">Téléphone *</label><input id="tel" name="tel" type="tel" required maxlength="20" pattern="[0-9 +\(\)\.\-]{6,20}" autocomplete="tel" title="Numéro de téléphone (chiffres, espaces, +)"></div>
             <div class="champ full"><label for="email">Email *</label><input id="email" name="email" type="email" required maxlength="120" autocomplete="email"></div>
             <div class="champ full"><label for="societe">Société / organisme (facultatif)</label><input id="societe" name="societe" maxlength="100" autocomplete="organization"></div>
@@ -763,6 +763,7 @@ let taxe = 'ht', filtreR = '', filtreC = '', texte = '';
 const panier = new Map();          // id -> quantité
 const presta = new Set();          // prestations/ambiances demandées
 const qteTemp = {};
+const QTE_MAX = 3;
 
 const eur = n => n.toLocaleString('fr-FR', {minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2}) + ' €';
 const prixAff = p => p.prix == null ? null : (taxe === 'ht' ? p.prix : p.prix * 1.2);
@@ -845,7 +846,7 @@ function rendreCatalogue() {
         <h5>${esc(p.nom)}</h5>
         ${px == null ? '<div class="prix devis">Sur devis</div>' : `<div class="prix">${eur(px)} <small>${taxe.toUpperCase()} / jour</small></div>`}
         <div class="ajout">
-          <div class="qte"><button data-moins="${p.id}">−</button><span>${q}</span><button data-plus="${p.id}">+</button></div>
+          <div class="qte"><button data-moins="${p.id}">−</button><span>${q}</span><button data-plus="${p.id}" ${q >= QTE_MAX ? 'disabled title="3 maximum par article"' : ''}>+</button></div>
           <button class="btn btn-or ${dans ? 'ok' : ''}" data-ajout="${p.id}">${dans ? '✓ Ajouté' : 'Ajouter'}</button>
         </div>
       </div></div>`;
@@ -909,14 +910,14 @@ document.addEventListener('click', e => {
     rendreCatalogue(); window.scrollTo({top: 0, behavior: 'smooth'});
     return;
   }
-  if (d.plus) { qteTemp[d.plus] = (qteTemp[d.plus] || 1) + 1; rendreCatalogue(); return; }
+  if (d.plus) { qteTemp[d.plus] = Math.min(QTE_MAX, (qteTemp[d.plus] || 1) + 1); rendreCatalogue(); return; }
   if (d.moins) { qteTemp[d.moins] = Math.max(1, (qteTemp[d.moins] || 1) - 1); rendreCatalogue(); return; }
   if (d.ajout) {
-    const id = Number(d.ajout), q = qteTemp[id] || 1;
+    const id = Number(d.ajout), q = Math.min(QTE_MAX, qteTemp[id] || 1);
     panier.set(id, q); majBadge(); rendreCatalogue();
     toast(`${PRODUITS[id].nom} ×${q} ajouté au devis`); return;
   }
-  if (d.splus) { panier.set(+d.splus, panier.get(+d.splus) + 1); rendreSelection(); majBadge(); return; }
+  if (d.splus) { panier.set(+d.splus, Math.min(QTE_MAX, panier.get(+d.splus) + 1)); rendreSelection(); majBadge(); return; }
   if (d.smoins) { const id = +d.smoins, q = panier.get(id) - 1; q > 0 ? panier.set(id, q) : panier.delete(id); rendreSelection(); majBadge(); return; }
   if (d.suppr) { panier.delete(+d.suppr); rendreSelection(); majBadge(); return; }
   if (d.spresta) { presta.delete(d.spresta); rendreSelection(); majBadge(); return; }
