@@ -1151,6 +1151,20 @@ function appliquerPhotos(racine = document) {
 // Si les photos se chargent (site en ligne), on masque les icônes de remplacement
 (function () { const t = new Image(); t.onload = () => document.body.classList.add('photos'); t.src = 'https://images.unsplash.com/' + IMG.hero + '?w=20&q=10'; })();
 
+/* ============ SAISIE DU NOM : lettres uniquement ============ */
+(function () {
+  const champNom = document.getElementById('nom');
+  if (!champNom) return;
+  champNom.addEventListener('input', () => {
+    const propre = champNom.value.replace(/[^A-Za-zÀ-ÿ '\-]/g, '');
+    if (propre !== champNom.value) {
+      const pos = champNom.selectionStart - (champNom.value.length - propre.length);
+      champNom.value = propre;
+      try { champNom.setSelectionRange(pos, pos); } catch (e) {}
+    }
+  });
+})();
+
 /* ============ EMAIL MASQUÉ (anti-robots) ============ */
 const MAIL = ['quentinlo', 'icloud.com'].join(String.fromCharCode(64));
 document.querySelectorAll('[data-mail]').forEach(el => { el.textContent = MAIL; });
